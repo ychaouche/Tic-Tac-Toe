@@ -33,7 +33,7 @@ def draw_handler(canvas, color, textfont, symbolfont, symbol_list):
     pygame.draw.line(canvas, color, (first_col, top_edge), (first_col, bottom_edge), 12)
     pygame.draw.line(canvas, color, (second_col, top_edge), (second_col, bottom_edge), 12)
     # Text displaying score and reset option
-    newgame_key = font.render("N = New Game", True, color)
+    newgame_key = textfont.render("N = New Game", True, color)
     canvas.blit(newgame_key, (8, 40))
 
     # draw symbols

@@ -62,7 +62,7 @@ def main():
 
          
         # the call to the draw handler
-        window_handler.draw_handler(canvas, white_color, fontobj)
+        window_handler.draw_handler(canvas, white_color, fontobj, fontobj2, symbol_list)
         
         # FPS limit to 60 -- essentially, setting the draw handler timing
         # it micro pauses so while loop only runs 60 times a second max.
