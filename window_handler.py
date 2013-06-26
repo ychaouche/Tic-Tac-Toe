@@ -16,9 +16,12 @@ second_row = 330
 first_col = 200
 second_col = 375
 
+# symbol constant
+symbol_constant = [60, 180]
 
 
-def draw_handler(canvas, line_color, font):
+
+def draw_handler(canvas, color, textfont, symbolfont, symbol_list):
 
     # clear canvas -- create the grid
     canvas.fill((0, 0, 0))
@@ -31,7 +34,13 @@ def draw_handler(canvas, line_color, font):
     pygame.draw.line(canvas, color, (second_col, top_edge), (second_col, bottom_edge), 12)
     # Text displaying score and reset option
     newgame_key = font.render("N = New Game", True, color)
-    
+    canvas.blit(newgame_key, (8, 40))
+
+    # draw symbols
+    for idx in range(len(symbol_list)):
+        symbol_key = symbolfont.render(symbol_list[idx], True, color)
+        canvas.blit(symbol_key,(symbol_constant[0] + (160*(idx//3)),
+                                symbol_constant[1] + (140 * (idx%3))))
 
     # update the display
     pygame.display.update()
