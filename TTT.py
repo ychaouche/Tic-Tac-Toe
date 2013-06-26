@@ -20,6 +20,15 @@ pygame.display.set_caption("Tic Tac Toe")
 fontobj = pygame.font.Font(pygame.font.match_font('timesnewroman'), 18)
 white_color = pygame.Color(255, 255, 255)
 
+def newgame():
+    global computers_turn, symbol_list, players_turn
+    
+    symbol_list = ["", "", "", "", "", "", "", "", ""] 
+    computers_turn = True
+    players_turn = False
+
+# Start a new game
+newgame()
 
 def main():
     # initialize loop until quit variable
