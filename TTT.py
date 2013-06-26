@@ -18,6 +18,7 @@ pygame.display.set_caption("Tic Tac Toe")
 
 # colours and fonts (objects)
 fontobj = pygame.font.Font(pygame.font.match_font('timesnewroman'), 18)
+fontobj2 = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
