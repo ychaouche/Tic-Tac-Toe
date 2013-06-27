@@ -21,7 +21,7 @@ gridsquare_constant = [60, 180]
 
 
 
-def draw_handler(canvas, color, newgamefont, XorO_font, currentgrid):
+def draw_handler(canvas, color, newgamefont, XorO_color XorO_font, currentgrid):
 
     # clear canvas -- create the grid
     canvas.fill((0, 0, 0))
@@ -38,7 +38,7 @@ def draw_handler(canvas, color, newgamefont, XorO_font, currentgrid):
 
     # draw symbols
     for gridsquare in range(len(currentgrid)):
-        XorO = XorO_font.render(currentgrid[gridsquare], True, color)
+        XorO = XorO_font.render(currentgrid[gridsquare], True, XorO_color)
         canvas.blit(XorO,(gridsquare_constant[0] + (160 * (gridsquare // 3)),
                           gridsquare_constant[1] + (140 * (gridsquare % 3))))
 

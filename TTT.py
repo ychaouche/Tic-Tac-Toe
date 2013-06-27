@@ -19,6 +19,8 @@ pygame.display.set_caption("Tic Tac Toe")
 # colours and fonts (objects)
 newgamefont = pygame.font.Font(pygame.font.match_font('timesnewroman'), 18)
 XorO_font = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
+
+XorO_color = pygame.Color(255, 0, 0)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
@@ -62,7 +64,7 @@ def main():
 
          
         # the call to the draw handler
-        window_handler.draw_handler(canvas, white_color, newgamefont, XorO_font, current_grid)
+        window_handler.draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, current_grid)
         
         # FPS limit to 60 -- essentially, setting the draw handler timing
         # it micro pauses so while loop only runs 60 times a second max.
