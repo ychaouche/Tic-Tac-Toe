@@ -21,7 +21,7 @@ symbol_constant = [60, 180]
 
 
 
-def draw_handler(canvas, color, textfont, symbolfont, currentgrid):
+def draw_handler(canvas, color, textfont, XorO_font, currentgrid):
 
     # clear canvas -- create the grid
     canvas.fill((0, 0, 0))
@@ -37,10 +37,10 @@ def draw_handler(canvas, color, textfont, symbolfont, currentgrid):
     canvas.blit(newgame_key, (8, 40))
 
     # draw symbols
-    for idx in range(len(currentgrid)):
-        symbol_key = symbolfont.render(currentgrid[idx], True, color)
-        canvas.blit(symbol_key,(symbol_constant[0] + (160*(idx//3)),
-                                symbol_constant[1] + (140 * (idx%3))))
+    for gridsquare in range(len(currentgrid)):
+        XorO = XorO_font.render(currentgrid[gridsquare], True, color)
+        canvas.blit(XorO,(symbol_constant[0] + (160 * (gridsquare // 3)),
+                          symbol_constant[1] + (140 * (gridsquare % 3))))
 
     # update the display
     pygame.display.update()
