@@ -58,7 +58,7 @@ def main():
                     window_handler.mc_handler(pygame.mouse.get_pos())
                     
             elif event.type == pygame.KEYDOWN:
-                kd_handler(event.key)
+                window_handler.kd_handler(event.key)
 
          
         # the call to the draw handler

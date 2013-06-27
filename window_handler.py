@@ -49,9 +49,9 @@ def draw_handler(canvas, color, textfont, symbolfont, symbol_list):
 ##    canvas.draw_text("Players wins: " , (380, 25), 32, "White")
 ##
 
-##def kd_handler(key):
-##    if pygame.K_n == key:
-##        init()
-##    
+def kd_handler(key):
+    if pygame.K_n == key:
+        TTT.newgame()
+    
 ###def mc_handler(pos):
 ##    
