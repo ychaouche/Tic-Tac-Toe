@@ -16,8 +16,8 @@ second_row = 330
 first_col = 200
 second_col = 375
 
-# symbol constant
-symbol_constant = [60, 180]
+# gridsquare constant
+gridsquare_constant = [60, 180]
 
 
 
@@ -39,8 +39,8 @@ def draw_handler(canvas, color, textfont, XorO_font, currentgrid):
     # draw symbols
     for gridsquare in range(len(currentgrid)):
         XorO = XorO_font.render(currentgrid[gridsquare], True, color)
-        canvas.blit(XorO,(symbol_constant[0] + (160 * (gridsquare // 3)),
-                          symbol_constant[1] + (140 * (gridsquare % 3))))
+        canvas.blit(XorO,(gridsquare_constant[0] + (160 * (gridsquare // 3)),
+                          gridsquare_constant[1] + (140 * (gridsquare % 3))))
 
     # update the display
     pygame.display.update()
