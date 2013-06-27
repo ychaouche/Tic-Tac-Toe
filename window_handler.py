@@ -21,7 +21,7 @@ gridsquare_constant = [60, 180]
 
 
 
-def draw_handler(canvas, color, textfont, XorO_font, currentgrid):
+def draw_handler(canvas, color, newgamefont, XorO_font, currentgrid):
 
     # clear canvas -- create the grid
     canvas.fill((0, 0, 0))
@@ -33,7 +33,7 @@ def draw_handler(canvas, color, textfont, XorO_font, currentgrid):
     pygame.draw.line(canvas, color, (first_col, top_edge), (first_col, bottom_edge), 12)
     pygame.draw.line(canvas, color, (second_col, top_edge), (second_col, bottom_edge), 12)
     # Text displaying score and reset option
-    newgame_key = textfont.render("N = New Game", True, color)
+    newgametext = newgamefont.render("N = New Game", True, color)
     canvas.blit(newgame_key, (8, 40))
 
     # draw symbols
