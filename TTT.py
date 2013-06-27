@@ -22,9 +22,9 @@ fontobj2 = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
-    global computers_turn, symbol_list, players_turn
+    global computers_turn, current_grid, players_turn
     
-    symbol_list = ["", "", "", "", "", "", "", "", ""] 
+    current_grid = ["", "", "", "", "", "", "", "", ""] 
     computers_turn = True
     players_turn = False
 
