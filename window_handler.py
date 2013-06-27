@@ -21,7 +21,7 @@ symbol_constant = [60, 180]
 
 
 
-def draw_handler(canvas, color, textfont, symbolfont, symbol_list):
+def draw_handler(canvas, color, textfont, symbolfont, currentgrid):
 
     # clear canvas -- create the grid
     canvas.fill((0, 0, 0))
@@ -37,8 +37,8 @@ def draw_handler(canvas, color, textfont, symbolfont, symbol_list):
     canvas.blit(newgame_key, (8, 40))
 
     # draw symbols
-    for idx in range(len(symbol_list)):
-        symbol_key = symbolfont.render(symbol_list[idx], True, color)
+    for idx in range(len(currentgrid)):
+        symbol_key = symbolfont.render(currentgrid[idx], True, color)
         canvas.blit(symbol_key,(symbol_constant[0] + (160*(idx//3)),
                                 symbol_constant[1] + (140 * (idx%3))))
 
