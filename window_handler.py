@@ -20,8 +20,8 @@ second_col = 375
 gridsquare_constant = [60, 20]
 
 # game pieces
-players_le = "O"
-computers_le = "X"
+plyrs_le = "O"
+comps_le = "X"
 
 # score
 comps_score = 0
@@ -60,8 +60,38 @@ def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, curren
     
 def mc_handler(pos, players_turn, computers_turn, currentgrid):
 
+    # Checks if mouseclick was in the first column
     if pos[0] < first_col and pos[0] > left_edge and players_turn:
         if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 0):
-            currentgrid[0] = players_le
+            currentgrid[0] = plyrs_le
+            computers_turn = True
+        if pos[1] < second_row and pos[1] > first_row and Plyr_Comp_options.isSpaceFree(currentgrid, 1):
+            currentgrid[1] = plyrs_le
+            computers_turn = True
+        if pos[1] < bottom_edge and pos[1] > second_row and Plyr_Comp_options.isSpaceFree(currentgrid, 2):
+            currentgrid[2] = plyrs_le
             computers_turn = True
 
+    # Second column
+    if pos[0] > first_col and pos[0] < second_col and players_turn:
+        if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 3):
+            currentgrid[3] = plyrs_le
+            computers_turn = True
+        if pos[1] < second_row and pos[1] > first_row and Plyr_Comp_options.isSpaceFree(currentgrid, 4):
+            currentgrid[4] = plyrs_le
+            computers_turn = True
+        if pos[1] < bottom_edge and pos[1] > second_row and Plyr_Comp_options.isSpaceFree(currentgrid, 5):
+            currentgrid[5] = plyrs_le
+            computers_turn = True
+
+    # Third column
+    if pos[0] > second_col and pos[0] < right_edge and players_turn:
+        if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 6):
+            currentgrid[6] = plyrs_le
+            computers_turn = True
+        if pos[1] > first_row and pos[1] < second_row and Plyr_Comp_options.isSpaceFree(currentgrid, 7):
+            currentgrid[7] = plyrs_le
+            computers_turn = True
+        if pos[1] > second_row and pos[1] < bottom_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 8):
+            currentgrid[8] = plyrs_le
+            computers_turn = True
