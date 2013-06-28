@@ -1,6 +1,6 @@
 # computer and player's grid options
 
-def isSpaceFree(grid, idx):
+def isSpaceFree(grid, square):
     # return true if the square is empty
     return grid[idx] == ""
 
