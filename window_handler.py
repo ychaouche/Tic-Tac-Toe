@@ -25,7 +25,7 @@ comps_le = "X"
 
 # score
 comps_score = 0
-players_score = 0
+plyrs_score = 0
 
 def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, currentgrid):
 
@@ -43,7 +43,7 @@ def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, curren
     # Text displaying score and reset option
     newgametext = newgamefont.render("N = New Game", True, white_color)
     comp_scoretxt = newgamefont.render("Computer: " + str(comps_score), True, white_color)
-    plyr_scoretxt = newgamefont.render("Player: " + str(players_score), True, white_color)
+    plyr_scoretxt = newgamefont.render("Player: " + str(plyrs_score), True, white_color)
 
     canvas.blit(comp_scoretxt, (8, 0))
     canvas.blit(plyr_scoretxt, (8, 25))
@@ -57,11 +57,12 @@ def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, curren
 
     # update the display
     pygame.display.update()
+
     
-def mc_handler(pos, players_turn, computers_turn, currentgrid):
+def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
 
     # Checks if mouseclick was in the first column
-    if pos[0] < first_col and pos[0] > left_edge and players_turn:
+    if pos[0] < first_col and pos[0] > left_edge and plyrs_turn:
         if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 0):
             currentgrid[0] = plyrs_le
             computers_turn = True
@@ -73,7 +74,7 @@ def mc_handler(pos, players_turn, computers_turn, currentgrid):
             computers_turn = True
 
     # Second column
-    if pos[0] > first_col and pos[0] < second_col and players_turn:
+    if pos[0] > first_col and pos[0] < second_col and plyrs_turn:
         if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 3):
             currentgrid[3] = plyrs_le
             computers_turn = True
@@ -85,7 +86,7 @@ def mc_handler(pos, players_turn, computers_turn, currentgrid):
             computers_turn = True
 
     # Third column
-    if pos[0] > second_col and pos[0] < right_edge and players_turn:
+    if pos[0] > second_col and pos[0] < right_edge and plyrs_turn:
         if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 6):
             currentgrid[6] = plyrs_le
             computers_turn = True
@@ -95,3 +96,12 @@ def mc_handler(pos, players_turn, computers_turn, currentgrid):
         if pos[1] > second_row and pos[1] < bottom_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 8):
             currentgrid[8] = plyrs_le
             computers_turn = True
+
+def scorekeeper(winner):
+    global comps_score, plyrs_score
+
+    if winner == comps_le:
+        comps_score += 1
+
+    if winner == plyrs_le:
+        plyrs_score += 1
