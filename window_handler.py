@@ -1,5 +1,4 @@
 ##import the variables
-import TTT
 import pygame
 import Plyr_Comp_options
 
@@ -24,7 +23,12 @@ gridsquare_constant = [60, 20]
 players_le = "O"
 computers_le = "X"
 
+# score
+comps_score = 0
+players_score = 0
+
 def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, currentgrid):
+
 
     # black canvas -- create the grid
     canvas.fill((0, 0, 0))
@@ -38,11 +42,11 @@ def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, curren
 
     # Text displaying score and reset option
     newgametext = newgamefont.render("N = New Game", True, white_color)
-    computer_score = newgamefont.render("Computer: " + str(TTT.comp_score), True, white_color)
-    player_score = newgamefont.render("Player: " + str(TTT.player_score), True, white_color)
+    comp_scoretxt = newgamefont.render("Computer: " + str(comps_score), True, white_color)
+    plyr_scoretxt = newgamefont.render("Player: " + str(players_score), True, white_color)
 
-    canvas.blit(computer_score, (8, 0))
-    canvas.blit(player_score, (8, 25))
+    canvas.blit(comp_scoretxt, (8, 0))
+    canvas.blit(plyr_scoretxt, (8, 25))
     canvas.blit(newgametext, (8, 480))
 
     # draw symbols
@@ -53,12 +57,6 @@ def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, curren
 
     # update the display
     pygame.display.update()
-
-# keydown handler -- 
-def kd_handler(key):
-    if pygame.K_n == key:
-        TTT.newgame()
-        print("hit")
     
 def mc_handler(pos, players_turn, computers_turn, currentgrid):
 

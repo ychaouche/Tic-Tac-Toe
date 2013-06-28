@@ -23,10 +23,6 @@ XorO_font = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
 XorO_color = pygame.Color(255, 0, 0)
 white_color = pygame.Color(255, 255, 255)
 
-# score
-comp_score = 0
-player_score = 0
-
 def newgame():
     global computers_turn, currentgrid, players_turn
     
@@ -34,6 +30,12 @@ def newgame():
     computers_turn = False
     players_turn = True
 
+# keydown handler -- 
+def kd_handler(key):
+    if pygame.K_n == key:
+        newgame()
+        print("hit")
+        
 # Start a new game
 newgame()
 
@@ -64,7 +66,7 @@ def main():
                     window_handler.mc_handler(pygame.mouse.get_pos(), players_turn, computers_turn, currentgrid)
                     
             elif event.type == pygame.KEYDOWN:
-                window_handler.kd_handler(event.key)
+                kd_handler(event.key)
 
          
         # the call to the draw handler
