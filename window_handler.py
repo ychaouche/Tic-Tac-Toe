@@ -1,6 +1,6 @@
 ##import the variables
 import pygame
-import Plyr_Comp_options
+import possible_moves
 
 # TTT border
 left_edge = 50
@@ -63,37 +63,37 @@ def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
 
     # Checks if mouseclick was in the first column
     if pos[0] < first_col and pos[0] > left_edge and plyrs_turn:
-        if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 0):
+        if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 0):
             currentgrid[0] = plyrs_le
             computers_turn = True
-        if pos[1] < second_row and pos[1] > first_row and Plyr_Comp_options.isSpaceFree(currentgrid, 1):
+        if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 1):
             currentgrid[1] = plyrs_le
             computers_turn = True
-        if pos[1] < bottom_edge and pos[1] > second_row and Plyr_Comp_options.isSpaceFree(currentgrid, 2):
+        if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 2):
             currentgrid[2] = plyrs_le
             computers_turn = True
 
     # Second column
     if pos[0] > first_col and pos[0] < second_col and plyrs_turn:
-        if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 3):
+        if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 3):
             currentgrid[3] = plyrs_le
             computers_turn = True
-        if pos[1] < second_row and pos[1] > first_row and Plyr_Comp_options.isSpaceFree(currentgrid, 4):
+        if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 4):
             currentgrid[4] = plyrs_le
             computers_turn = True
-        if pos[1] < bottom_edge and pos[1] > second_row and Plyr_Comp_options.isSpaceFree(currentgrid, 5):
+        if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 5):
             currentgrid[5] = plyrs_le
             computers_turn = True
 
     # Third column
     if pos[0] > second_col and pos[0] < right_edge and plyrs_turn:
-        if pos[1] < first_row and pos[1] > top_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 6):
+        if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 6):
             currentgrid[6] = plyrs_le
             computers_turn = True
-        if pos[1] > first_row and pos[1] < second_row and Plyr_Comp_options.isSpaceFree(currentgrid, 7):
+        if pos[1] > first_row and pos[1] < second_row and possible_moves.isSpaceFree(currentgrid, 7):
             currentgrid[7] = plyrs_le
             computers_turn = True
-        if pos[1] > second_row and pos[1] < bottom_edge and Plyr_Comp_options.isSpaceFree(currentgrid, 8):
+        if pos[1] > second_row and pos[1] < bottom_edge and possible_moves.isSpaceFree(currentgrid, 8):
             currentgrid[8] = plyrs_le
             computers_turn = True
 
