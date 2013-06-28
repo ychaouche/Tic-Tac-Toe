@@ -27,7 +27,7 @@ comps_le = "X"
 comps_score = 0
 plyrs_score = 0
 
-def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, currentgrid):
+def draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid):
 
 
     # black canvas -- create the grid
@@ -41,9 +41,9 @@ def draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, curren
     pygame.draw.line(canvas, white_color, (second_col, top_edge), (second_col, bottom_edge), 12)
 
     # Text displaying score and reset option
-    newgametext = newgamefont.render("N = New Game", True, white_color)
-    comp_scoretxt = newgamefont.render("Computer: " + str(comps_score), True, white_color)
-    plyr_scoretxt = newgamefont.render("Player: " + str(plyrs_score), True, white_color)
+    newgametext = wordfont.render("N = New Game", True, white_color)
+    comp_scoretxt = wordfont.render("Computer: " + str(comps_score), True, white_color)
+    plyr_scoretxt = wordfont.render("Player: " + str(plyrs_score), True, white_color)
 
     canvas.blit(comp_scoretxt, (8, 0))
     canvas.blit(plyr_scoretxt, (8, 25))

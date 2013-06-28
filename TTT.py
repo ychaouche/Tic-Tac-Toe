@@ -34,7 +34,6 @@ def newgame():
 def kd_handler(key):
     if pygame.K_n == key:
         newgame()
-        print("hit")
         
 # Start a new game
 newgame()
