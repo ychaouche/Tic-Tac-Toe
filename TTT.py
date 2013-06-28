@@ -23,12 +23,16 @@ XorO_font = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
 XorO_color = pygame.Color(255, 0, 0)
 white_color = pygame.Color(255, 255, 255)
 
+# score
+comp_score = 0
+player_score = 0
+
 def newgame():
-    global computers_turn, current_grid, players_turn
+    global computers_turn, currentgrid, players_turn
     
-    current_grid = ["", "", "", "", "", "", "", "", ""] 
-    computers_turn = True
-    players_turn = False
+    currentgrid = ["", "", "", "", "", "", "", "", ""] 
+    computers_turn = False
+    players_turn = True
 
 # Start a new game
 newgame()
@@ -57,14 +61,14 @@ def main():
                 
                 # just respond to left mouse clicks
                 if pygame.mouse.get_pressed()[0]:
-                    window_handler.mc_handler(pygame.mouse.get_pos())
+                    window_handler.mc_handler(pygame.mouse.get_pos(), players_turn, computers_turn, currentgrid)
                     
             elif event.type == pygame.KEYDOWN:
                 window_handler.kd_handler(event.key)
 
          
         # the call to the draw handler
-        window_handler.draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, current_grid)
+        window_handler.draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, currentgrid)
         
         # FPS limit to 60 -- essentially, setting the draw handler timing
         # it micro pauses so while loop only runs 60 times a second max.
