@@ -7,6 +7,7 @@ def computers_play(grid):
     # AI algorithm
     # First, make it check if computer can win in the next move
     if winning_move.winning_move(grid):
+        window_handler.scorekeeper(window_handler.X)
         return winning_move.winning_move(grid)
 
     # Second, check if player is going to win in the next move and block it

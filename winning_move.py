@@ -14,7 +14,6 @@ def winning_move(grid):
         if possible_moves.isSpaceFree(grid_copy, square):
             possible_moves.makeMove(grid_copy, window_handler.X, square)
             if window_handler.is_winner(grid_copy, window_handler.X):
-                window_handler.scorekeeper(window_handler.X)
                 return square
 
             
