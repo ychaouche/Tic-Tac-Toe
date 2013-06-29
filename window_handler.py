@@ -63,39 +63,48 @@ def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
 
     # Checks if mouseclick was in the first column
     if pos[0] < first_col and pos[0] > left_edge and plyrs_turn:
+        # Zeroth square top left
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 0):
             currentgrid[0] = O
-            comps_turn = True
+            return True
+        # First square center left
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 1):
             currentgrid[1] = O
-            comps_turn = True
+            return True
+        # Second square lower left
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 2):
             currentgrid[2] = O
-            comps_turn = True
+            return True
 
     # Second column
     if pos[0] > first_col and pos[0] < second_col and plyrs_turn:
+        # Third square top center
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 3):
             currentgrid[3] = O
-            comps_turn = True
+            return True
+        # Fourth square center
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 4):
             currentgrid[4] = O
-            comps_turn = True
+            return True
+        # Fifth square bottom center
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 5):
             currentgrid[5] = O
-            comps_turn = True
+            return True
 
     # Third column
     if pos[0] > second_col and pos[0] < right_edge and plyrs_turn:
+        # Sixth square top right
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 6):
             currentgrid[6] = O
-            comps_turn = True
+            return True
+        # Seventh square center right
         if pos[1] > first_row and pos[1] < second_row and possible_moves.isSpaceFree(currentgrid, 7):
             currentgrid[7] = O
-            comps_turn = True
+            return True
+        # Eighth square bottom right
         if pos[1] > second_row and pos[1] < bottom_edge and possible_moves.isSpaceFree(currentgrid, 8):
             currentgrid[8] = O
-            comps_turn = True
+            return True
 
 def scorekeeper(winner):
     global comps_score, plyrs_score

@@ -64,7 +64,7 @@ def main():
                 
                 # just respond to left mouse clicks
                 if pygame.mouse.get_pressed()[0]:
-                    window_handler.mc_handler(pygame.mouse.get_pos(), plyrs_turn, comps_turn, currentgrid)
+                    comps_turn = window_handler.mc_handler(pygame.mouse.get_pos(), plyrs_turn, comps_turn, currentgrid)
                     
             elif event.type == pygame.KEYDOWN:
                 kd_handler(event.key)

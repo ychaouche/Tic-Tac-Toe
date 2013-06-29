@@ -6,12 +6,12 @@ import winning_move, block
 def computers_play(grid):
     # AI algorithm
     # First, make it check if computer can win in the next move
-    if winning_move(grid):
-        return winning_move(grid)
+    if winning_move.winning_move(grid):
+        return winning_move.winning_move(grid)
 
     # Second, check if player is going to win in the next move and block it
-    if block(grid):
-        return block(grid)
+    if block.block(grid):
+        return block.block(grid)
 
     # Third, try to take a corner if its free
     move = possible_moves.chooseRandomMoveFromList(grid, [0, 2, 6, 8])
