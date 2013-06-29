@@ -1,8 +1,10 @@
+import random
+
 # computer and player's grid options
 
 def isSpaceFree(grid, square):
     # return true if the square is empty
-    return grid[idx] == ""
+    return grid[square] == ""
 
 def chooseRandomMoveFromList(grid, movesList):
     # Returns a valid move from the passed list on the passed board
