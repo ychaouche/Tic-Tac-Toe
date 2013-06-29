@@ -5,6 +5,7 @@ import os
 import sys
 import pygame
 import window_handler
+import computer_AI
 
 # pygame specific locals/constants
 from pygame.locals import *
@@ -17,18 +18,18 @@ canvas = pygame.display.set_mode((600, 500))
 pygame.display.set_caption("Tic Tac Toe")
 
 # colours and fonts (objects)
-newgamefont = pygame.font.Font(pygame.font.match_font('timesnewroman'), 18)
+wordfont = pygame.font.Font(pygame.font.match_font('timesnewroman'), 18)
 XorO_font = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
 
 XorO_color = pygame.Color(255, 0, 0)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
-    global computers_turn, currentgrid, players_turn
+    global comps_turn, currentgrid, plyrs_turn
     
     currentgrid = ["", "", "", "", "", "", "", "", ""] 
-    computers_turn = False
-    players_turn = True
+    comps_turn = True
+    plyrs_turn = False
 
 # keydown handler -- 
 def kd_handler(key):
@@ -39,6 +40,7 @@ def kd_handler(key):
 newgame()
 
 def main():
+    global comps_turn, plyrs_turn
     # initialize loop until quit variable
     running = True
     
@@ -62,14 +64,19 @@ def main():
                 
                 # just respond to left mouse clicks
                 if pygame.mouse.get_pressed()[0]:
-                    window_handler.mc_handler(pygame.mouse.get_pos(), players_turn, computers_turn, currentgrid)
+                    window_handler.mc_handler(pygame.mouse.get_pos(), plyrs_turn, comps_turn, currentgrid)
                     
             elif event.type == pygame.KEYDOWN:
                 kd_handler(event.key)
 
-         
+        # Computers go
+        if comps_turn:
+            currentgrid[computer_AI.computers_play(currentgrid)] = "X"
+            comps_turn = False
+            plyrs_turn = True
+            
         # the call to the draw handler
-        window_handler.draw_handler(canvas, white_color, newgamefont, XorO_color, XorO_font, currentgrid)
+        window_handler.draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, comps_turn, plyrs_turn)
         
         # FPS limit to 60 -- essentially, setting the draw handler timing
         # it micro pauses so while loop only runs 60 times a second max.
