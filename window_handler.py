@@ -27,7 +27,7 @@ comps_le = "X"
 comps_score = 0
 plyrs_score = 0
 
-def draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid):
+def draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, comps_turn, plyrs_turn):
 
 
     # black canvas -- create the grid
@@ -65,37 +65,37 @@ def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
     if pos[0] < first_col and pos[0] > left_edge and plyrs_turn:
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 0):
             currentgrid[0] = plyrs_le
-            computers_turn = True
+            comps_turn = True
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 1):
             currentgrid[1] = plyrs_le
-            computers_turn = True
+            comps_turn = True
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 2):
             currentgrid[2] = plyrs_le
-            computers_turn = True
+            comps_turn = True
 
     # Second column
     if pos[0] > first_col and pos[0] < second_col and plyrs_turn:
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 3):
             currentgrid[3] = plyrs_le
-            computers_turn = True
+            comps_turn = True
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 4):
             currentgrid[4] = plyrs_le
-            computers_turn = True
+            comps_turn = True
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 5):
             currentgrid[5] = plyrs_le
-            computers_turn = True
+            comps_turn = True
 
     # Third column
     if pos[0] > second_col and pos[0] < right_edge and plyrs_turn:
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 6):
             currentgrid[6] = plyrs_le
-            computers_turn = True
+            comps_turn = True
         if pos[1] > first_row and pos[1] < second_row and possible_moves.isSpaceFree(currentgrid, 7):
             currentgrid[7] = plyrs_le
-            computers_turn = True
+            comps_turn = True
         if pos[1] > second_row and pos[1] < bottom_edge and possible_moves.isSpaceFree(currentgrid, 8):
             currentgrid[8] = plyrs_le
-            computers_turn = True
+            comps_turn = True
 
 def scorekeeper(winner):
     global comps_score, plyrs_score
@@ -105,7 +105,7 @@ def scorekeeper(winner):
 
     if winner == plyrs_le:
         plyrs_score += 1
-
+    
 # checks for a winner
 def is_winner(gr, le):
     # gr == grid and le == letter, returns True if there is a winner
