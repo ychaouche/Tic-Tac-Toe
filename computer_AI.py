@@ -3,6 +3,10 @@ import window_handler
 import possible_moves
 import winning_move, block
 
+# grids sides and corners
+sides = [1, 3, 5, 7]
+corners = [0, 2, 6, 8]
+
 def computers_play(grid):
     # AI algorithm
     # hard coded winning cases for the player
@@ -19,7 +23,7 @@ def computers_play(grid):
         return block.block(grid)
 
     # Third, try to take a corner if its free
-    move = possible_moves.chooseRandomMove(grid, [0, 2, 6, 8])
+    move = possible_moves.chooseRandomMove(grid, corners)
     if move != None:
         return move
 
@@ -28,4 +32,4 @@ def computers_play(grid):
         return 4
 
     # Move on one of the sides
-    return possible_moves.chooseRandomMove(grid, [1, 3, 5, 7])
+    return possible_moves.chooseRandomMove(grid, sides)
