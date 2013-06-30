@@ -5,6 +5,10 @@ import winning_move, block
 
 def computers_play(grid):
     # AI algorithm
+    # hard coded winning cases for the player
+    if ((grid[3] == "O") or (grid[5] == "O")) and ((grid[1] == "O") or (grid[7] == "O")) and grid[4] == "":
+        return 4
+
     # First, make it check if computer can win in the next move
     if winning_move.winning_move(grid):
         window_handler.scorekeeper(window_handler.X)
