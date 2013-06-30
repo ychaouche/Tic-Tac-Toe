@@ -64,7 +64,7 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 
                 # just respond to left mouse clicks
-                if pygame.mouse.get_pressed()[0]:
+                if pygame.mouse.get_pressed()[0] and possible_moves.plyrs_turn:
                     currentgrid[window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, possible_moves.comps_turn, currentgrid)] = window_handler.O
                     possible_moves.switch_turns()
                     

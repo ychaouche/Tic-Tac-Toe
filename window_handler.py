@@ -65,38 +65,44 @@ def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
         # Zeroth square top left
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 0):
             currentgrid[0] = O
+            return 0
         # First square center left
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 1):
             currentgrid[1] = O
+            return 1
         # Second square lower left
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 2):
             currentgrid[2] = O
+            return 2
 
     # Second column
     if pos[0] > first_col and pos[0] < second_col and plyrs_turn:
         # Third square top center
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 3):
             currentgrid[3] = O
+            return 3
         # Fourth square center
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 4):
             currentgrid[4] = O
+            return 4
         # Fifth square bottom center
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 5):
             currentgrid[5] = O
+            return 5
 
     # Third column
     if pos[0] > second_col and pos[0] < right_edge and plyrs_turn:
         # Sixth square top right
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 6):
             currentgrid[6] = O
+            return 6
         # Seventh square center right
         if pos[1] > first_row and pos[1] < second_row and (possible_moves.isSpaceFree(currentgrid, 7)):
             return 7
-        else:
-            pass
         # Eighth square bottom right
         if pos[1] > second_row and pos[1] < bottom_edge and possible_moves.isSpaceFree(currentgrid, 8):
             currentgrid[8] = O
+            return 8
 
 def scorekeeper(winner):
     global comps_score, plyrs_score
