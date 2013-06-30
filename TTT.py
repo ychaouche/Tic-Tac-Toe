@@ -6,6 +6,7 @@ import sys
 import pygame
 import window_handler
 import computer_AI
+import possible_moves
 
 # pygame specific locals/constants
 from pygame.locals import *
@@ -25,17 +26,17 @@ XorO_color = pygame.Color(255, 0, 0)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
-    global comps_turn, currentgrid, plyrs_turn
+    global currentgrid
     
     currentgrid = ["", "", "", "", "", "", "", "", ""] 
-    comps_turn = True
-    plyrs_turn = False
+    possible_moves.comps_turn = True
+    possible_moves.plyrs_turn = False
 
 # keydown handler -- 
 def kd_handler(key):
     if pygame.K_n == key:
         newgame()
-        
+
 # Start a new game
 newgame()
 
@@ -64,19 +65,19 @@ def main():
                 
                 # just respond to left mouse clicks
                 if pygame.mouse.get_pressed()[0]:
-                    comps_turn = window_handler.mc_handler(pygame.mouse.get_pos(), plyrs_turn, comps_turn, currentgrid)
+                    window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, possible_moves.comps_turn, currentgrid)
+                    possible_moves.switch_turns()
                     
             elif event.type == pygame.KEYDOWN:
                 kd_handler(event.key)
 
         # Computers go
-        if comps_turn:
+        if possible_moves.comps_turn:
             currentgrid[computer_AI.computers_play(currentgrid)] = "X"
-            comps_turn = False
-            plyrs_turn = True
+            possible_moves.switch_turns()
             
         # the call to the draw handler
-        window_handler.draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, comps_turn, plyrs_turn)
+        window_handler.draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, possible_moves.comps_turn, possible_moves.plyrs_turn)
         
         # FPS limit to 60 -- essentially, setting the draw handler timing
         # it micro pauses so while loop only runs 60 times a second max.

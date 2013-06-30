@@ -1,5 +1,9 @@
 import random
 
+# turns
+comps_turn = True
+plyrs_turn = False
+
 # computer and player's grid options
 
 def isSpaceFree(grid, square):
@@ -24,3 +28,15 @@ def makeMove(grid, letter, square):
     # places letter on the grid
     grid[square] = letter
 
+# switch turns
+def switch_turns():
+    global comps_turn, plyrs_turn
+
+    comps_turn, plyrs_turn = plyrs_turn, comps_turn
+
+# no more moves
+def dead_game():
+    global comps_turn, plyrs_turn
+
+    comps_turn = False
+    plyrs_turn = False

@@ -29,7 +29,6 @@ plyrs_score = 0
 
 def draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, comps_turn, plyrs_turn):
 
-
     # black canvas -- create the grid
     canvas.fill((0, 0, 0))
     
@@ -66,51 +65,43 @@ def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
         # Zeroth square top left
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 0):
             currentgrid[0] = O
-            return True
         # First square center left
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 1):
             currentgrid[1] = O
-            return True
         # Second square lower left
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 2):
             currentgrid[2] = O
-            return True
 
     # Second column
     if pos[0] > first_col and pos[0] < second_col and plyrs_turn:
         # Third square top center
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 3):
             currentgrid[3] = O
-            return True
         # Fourth square center
         if pos[1] < second_row and pos[1] > first_row and possible_moves.isSpaceFree(currentgrid, 4):
             currentgrid[4] = O
-            return True
         # Fifth square bottom center
         if pos[1] < bottom_edge and pos[1] > second_row and possible_moves.isSpaceFree(currentgrid, 5):
             currentgrid[5] = O
-            return True
 
     # Third column
     if pos[0] > second_col and pos[0] < right_edge and plyrs_turn:
         # Sixth square top right
         if pos[1] < first_row and pos[1] > top_edge and possible_moves.isSpaceFree(currentgrid, 6):
             currentgrid[6] = O
-            return True
         # Seventh square center right
         if pos[1] > first_row and pos[1] < second_row and possible_moves.isSpaceFree(currentgrid, 7):
             currentgrid[7] = O
-            return True
         # Eighth square bottom right
         if pos[1] > second_row and pos[1] < bottom_edge and possible_moves.isSpaceFree(currentgrid, 8):
             currentgrid[8] = O
-            return True
 
 def scorekeeper(winner):
     global comps_score, plyrs_score
 
     if winner == X:
         comps_score += 1
+        possible_moves.dead_game()
 
     if winner == O:
         plyrs_score += 1
