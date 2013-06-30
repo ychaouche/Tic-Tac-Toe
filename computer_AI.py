@@ -18,17 +18,18 @@ def computers_play(grid):
     4
     >>> computers_play(["0", "", "X", "", "", "O", "", "", "X"])
     6
+    >>> computers_play(["", "O", "", "", "X", "O", "X", "O", "X"])
+    0
     """
 
     # AI algorithm
+    # First, make it check if computer can win in the next move
+    if winning_move.winning_move(grid):
+        return winning_move.winning_move(grid)
+
     # hard coded winning cases for the player
     if ((grid[3] == "O") or (grid[5] == "O")) and ((grid[1] == "O") or (grid[7] == "O")) and grid[4] == "":
         return 4
-
-    # First, make it check if computer can win in the next move
-    if winning_move.winning_move(grid):
-        window_handler.scorekeeper(window_handler.X)
-        return winning_move.winning_move(grid)
 
     # Second, check if player is going to win in the next move and block it
     if block.block(grid):
@@ -38,10 +39,6 @@ def computers_play(grid):
     move = possible_moves.chooseRandomMove(grid, corners)
     if move != None:
         return move
-
-    # Take center if it is free
-    if possible_moves.isSpaceFree(grid, 4):
-        return 4
 
     # Move on one of the sides
     return possible_moves.chooseRandomMove(grid, sides)

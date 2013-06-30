@@ -65,7 +65,7 @@ def main():
                 
                 # just respond to left mouse clicks
                 if pygame.mouse.get_pressed()[0]:
-                    window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, possible_moves.comps_turn, currentgrid)
+                    currentgrid[window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, possible_moves.comps_turn, currentgrid)] = window_handler.O
                     possible_moves.switch_turns()
                     
             elif event.type == pygame.KEYDOWN:
@@ -75,10 +75,13 @@ def main():
         if possible_moves.comps_turn:
             currentgrid[computer_AI.computers_play(currentgrid)] = "X"
             possible_moves.switch_turns()
+            if window_handler.is_winner(currentgrid, window_handler.X):
+                window_handler.scorekeeper(window_handler.X)
+                
             
         # the call to the draw handler
         window_handler.draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, possible_moves.comps_turn, possible_moves.plyrs_turn)
-        
+
         # FPS limit to 60 -- essentially, setting the draw handler timing
         # it micro pauses so while loop only runs 60 times a second max.
         clock.tick(60)

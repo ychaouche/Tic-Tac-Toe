@@ -7,10 +7,10 @@ def winning_move(grid):
 
     >>> winning_move(["X", "", "", "", "X", "", "", "", ""])
     8
-    >>> winning_move(["", "X", "", "", "", "", "", "X", ""])
-    4
-    >>> winning_move(["", "", "", "X", "X", "", "", "", ""])
-    5
+    >>> winning_move(["", "O", "", "", "X", "O", "X", "O", "X"])
+    0
+    >>> winning_move(["", "O", "", "O", "X", "", "X", "O", "X"])
+    0
     """
     
     for square in range(9):
