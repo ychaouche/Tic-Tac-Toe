@@ -65,12 +65,37 @@ def makeMove(grid, letter, square):
 
 # switch turns
 def switch_turns():
+    """(None) -> None
+
+    allows plyr to play
+    swaps comps_turn with plyrs_turn and plyrs_turn replies in kind
+
+    >>> comps_turn, plyrs_turn = False, True
+    >>> comps_turn, plyrs_turn
+    (False, True)
+    >>> comps_turn, plyrs_turn = True, False
+    >>> comps_turn, plyrs_turn
+    (True, False)
+    """
+    
     global comps_turn, plyrs_turn
 
     comps_turn, plyrs_turn = plyrs_turn, comps_turn
 
 # no more moves
 def dead_game():
+    """(None) -> None
+
+    Ends the game
+    comps_turn and plyrs_turn are turned to False
+
+    >>> comps_turn, plyrs_turn
+    (True, False)
+    >>> comps_turn, plyrs_turn = False, False
+    >>> comps_turn, plyrs_turn
+    (False, False)
+    """
+    
     global comps_turn, plyrs_turn
 
     comps_turn = False
