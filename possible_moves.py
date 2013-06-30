@@ -7,10 +7,22 @@ plyrs_turn = False
 # computer and player's grid options
 
 def isSpaceFree(grid, square):
+    """(list, int) -> bool
+
+    compares the given index in a list to an empty string
+
+    >>> isSpaceFree(["", "X"], 0)
+    True
+    """
+    
     # return true if the square is empty
     return grid[square] == ""
 
-def chooseRandomMoveFromList(grid, movesList):
+def chooseRandomMove(grid, movesList):
+    """
+
+    """
+    
     # Returns a valid move from the passed list on the passed board
     # Returns None if there is no valid move
     possibleMoves = []
@@ -40,3 +52,8 @@ def dead_game():
 
     comps_turn = False
     plyrs_turn = False
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()

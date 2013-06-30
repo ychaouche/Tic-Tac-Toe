@@ -19,7 +19,7 @@ def computers_play(grid):
         return block.block(grid)
 
     # Third, try to take a corner if its free
-    move = possible_moves.chooseRandomMoveFromList(grid, [0, 2, 6, 8])
+    move = possible_moves.chooseRandomMove(grid, [0, 2, 6, 8])
     if move != None:
         return move
 
@@ -28,4 +28,4 @@ def computers_play(grid):
         return 4
 
     # Move on one of the sides
-    return possible_moves.chooseRandomMoveFromList(grid, [1, 3, 5, 7])
+    return possible_moves.chooseRandomMove(grid, [1, 3, 5, 7])
