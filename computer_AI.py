@@ -8,6 +8,18 @@ sides = [1, 3, 5, 7]
 corners = [0, 2, 6, 8]
 
 def computers_play(grid):
+    """(list) -> int
+
+    returns the square where the computer will play next
+
+    >>> computers_play(["", "O", "X", "", "", "O", "", "", "X"])
+    4
+    >>> computers_play(["X", "O", "", "O", "", "", "X", "", ""])
+    4
+    >>> computers_play(["0", "", "X", "", "", "O", "", "", "X"])
+    6
+    """
+
     # AI algorithm
     # hard coded winning cases for the player
     if ((grid[3] == "O") or (grid[5] == "O")) and ((grid[1] == "O") or (grid[7] == "O")) and grid[4] == "":
@@ -33,3 +45,7 @@ def computers_play(grid):
 
     # Move on one of the sides
     return possible_moves.chooseRandomMove(grid, sides)
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
