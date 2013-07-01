@@ -28,7 +28,12 @@ comps_score = 0
 plyrs_score = 0
 
 def draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgrid, comps_turn, plyrs_turn):
+    """(pygame.Surface, pygame.Color, pygame.font.Font, pygame.Color, pygame.font.Font, list, bool, bool) -> None
 
+    displays the human computer interface on the screen
+
+    """
+    
     # black canvas -- create the grid
     canvas.fill((0, 0, 0))
     
