@@ -22,7 +22,7 @@ pygame.display.set_caption("Tic Tac Toe")
 wordfont = pygame.font.Font(pygame.font.match_font('timesnewroman'), 18)
 XorO_font = pygame.font.Font(pygame.font.match_font('timesnewroman'), 180)
 
-XorO_color = pygame.Color(255, 0, 0)
+XorO_color = pygame.Color(0, 0, 255)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
@@ -97,7 +97,7 @@ def main():
 
         # Computers go
         if possible_moves.comps_turn:
-            currentgrid[computer_AI.computers_play(currentgrid)] = "X"
+            currentgrid[computer_AI.computers_play(currentgrid)] = window_handler.X
             possible_moves.switch_turns()
             if window_handler.is_winner(currentgrid, window_handler.X):
                 window_handler.scorekeeper(window_handler.X)
