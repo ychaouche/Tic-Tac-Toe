@@ -24,6 +24,7 @@ def computers_play(grid):
 
     # AI algorithm
     # First, make it check if computer can win in the next move
+    possible_moves.taken_space = ""
     if winning_move.winning_move(grid):
         return winning_move.winning_move(grid)
 
