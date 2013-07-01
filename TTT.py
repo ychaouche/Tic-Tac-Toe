@@ -26,6 +26,26 @@ XorO_color = pygame.Color(255, 0, 0)
 white_color = pygame.Color(255, 255, 255)
 
 def newgame():
+    """(None) -> None
+
+    reset currentgrid, plyrs and comps turn into beginning state
+
+    >>> comps_turn = False
+    >>> comps_turn
+    False
+    >>> currentgrid = ["", "X","", "X","", "X","", "X",""]
+    >>> currentgrid
+    ['', 'X', '', 'X', '', 'X', '', 'X', '']
+    >>> currentgrid = ['', '', '', '', '', '', '', '', '']
+    >>> currentgrid
+    ['', '', '', '', '', '', '', '', '']
+    >>> plyrs_turn = True
+    >>> plyrs_turn
+    True
+    >>> plyrs_turn = False
+    >>> plyrs_turn
+    False
+    """
     global currentgrid
     
     currentgrid = ["", "", "", "", "", "", "", "", ""] 
@@ -34,6 +54,10 @@ def newgame():
 
 # keydown handler -- 
 def kd_handler(key):
+    """(int) -> None
+
+    calls newgame if n is pressed
+    """
     if pygame.K_n == key:
         newgame()
 
@@ -64,8 +88,8 @@ def main():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 
                 # just respond to left mouse clicks
-                if pygame.mouse.get_pressed()[0] and window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, possible_moves.comps_turn, currentgrid):
-                    window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, possible_moves.comps_turn, currentgrid)
+                if pygame.mouse.get_pressed()[0] and window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, currentgrid):
+                    window_handler.mc_handler(pygame.mouse.get_pos(), possible_moves.plyrs_turn, currentgrid)
                     possible_moves.switch_turns()
                     
             elif event.type == pygame.KEYDOWN:
@@ -95,3 +119,6 @@ def main():
 # could be thought of as a call to frame.start() of sorts
 if __name__ == '__main__': main() 
 
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()

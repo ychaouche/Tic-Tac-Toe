@@ -58,7 +58,17 @@ def draw_handler(canvas, white_color, wordfont, XorO_color, XorO_font, currentgr
     pygame.display.update()
 
     
-def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
+def mc_handler(pos, plyrs_turn, currentgrid):
+    """(list, bool, list) -> bool
+
+    returns true if the space is free and mutates the list with the player's letter
+
+    >>> mc_handler([170, 170], True, ["O", "", "", "", "", "", "", "", "X"])
+    >>> mc_handler([170, 170], True, ["", "", "", "", "", "", "", "", "X"])
+    True
+    >>> mc_handler([5, 1], False, ["O", "", "", "", "", "", "", "", "X"])
+    >>> mc_handler([5, 1], True, ["O", "", "", "", "", "", "", "", "X"])
+    """
 
     # Checks if mouseclick was in the first column
     if pos[0] < first_col and pos[0] > left_edge and plyrs_turn:
@@ -106,8 +116,18 @@ def mc_handler(pos, plyrs_turn, comps_turn, currentgrid):
             return True
 
 def scorekeeper(winner):
-    global comps_score, plyrs_score
+    """(str) -> None
 
+    adds a point to the corresponding player
+
+    >>> winner = "X"
+    >>> winner == "X"
+    True
+    >>> winner = "O"
+    >>> winner == "X"
+    False
+    """
+    global comps_score, plyrs_score
     if winner == X:
         comps_score += 1
         possible_moves.dead_game()
@@ -117,6 +137,15 @@ def scorekeeper(winner):
     
 # checks for a winner
 def is_winner(gr, le):
+    """(list, str) -> bool
+
+    returns true for 3 list items that are the same to the given str
+
+    >>> is_winner(["X", "O", "", "X", "O", "", "X", "", ""], "X")
+    True
+    >>> is_winner(["", "O", "X", "O", "X", "", "X", "", ""], "X")
+    True
+    """
     # gr == grid and le == letter, returns True if there is a winner
 
     return ((gr[0] == le and gr[1] == le and gr[2] == le) or # up the left side
@@ -128,3 +157,8 @@ def is_winner(gr, le):
             (gr[8] == le and gr[7] == le and gr[6] == le) or # up the right side
             (gr[3] == le and gr[4] == le and gr[5] == le))   # up the middle
 
+
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()

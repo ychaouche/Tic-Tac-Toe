@@ -1,15 +1,15 @@
 import possible_moves, window_handler
 
-def winning_move(grid):
+def possible_three(grid):
     """(list) -> int
 
     returns the index of the winning move
 
-    >>> winning_move(["X", "", "", "", "X", "", "", "", ""])
+    >>> possible_three(["X", "", "", "", "X", "", "", "", ""])
     8
-    >>> winning_move(["", "O", "", "", "X", "O", "X", "O", "X"])
+    >>> possible_three(["", "O", "", "", "X", "O", "X", "O", "X"])
     0
-    >>> winning_move(["", "O", "", "O", "X", "", "X", "O", "X"])
+    >>> possible_three(["", "O", "", "O", "X", "", "X", "O", "X"])
     0
     """
     

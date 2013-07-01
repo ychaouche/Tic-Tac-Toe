@@ -24,8 +24,8 @@ def computers_play(grid):
 
     # AI algorithm
     # First, make it check if computer can win in the next move
-    if winning_move.winning_move(grid):
-        return winning_move.winning_move(grid)
+    if winning_move.possible_three(grid):
+        return winning_move.possible_three(grid)
 
     # hard coded winning cases for the player
     if ((grid[3] == "O") or (grid[5] == "O")) and ((grid[1] == "O") or (grid[7] == "O")) and grid[4] == "":
