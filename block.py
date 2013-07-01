@@ -1,6 +1,6 @@
 import window_handler, possible_moves
 
-def block(grid):
+def onemoveahead(grid):
     """(list) -> int
 
     return the index of the possible win if the opponent places his piece there

@@ -32,8 +32,8 @@ def computers_play(grid):
         return 4
 
     # Second, check if player is going to win in the next move and block it
-    if block.block(grid):
-        return block.block(grid)
+    if block.onemoveahead(grid):
+        return block.onemoveahead(grid)
 
     # Third, try to take a corner if its free
     move = possible_moves.chooseRandomMove(grid, corners)
