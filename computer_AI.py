@@ -1,48 +1,217 @@
-# import modules
-import window_handler
-import possible_moves
-import winning_move, block
+import possibleMoves
 
-# grids sides and corners
-sides = [1, 3, 5, 7]
-corners = [0, 2, 6, 8]
 
-def computers_play(grid):
-    """(list) -> int
 
-    returns the square where the computer will play next
+def getComputerMove(board, computerLetter):
+    if computerLetter == 'X':
+        playerLetter = 'O'
+    else:
+        playerLetter = 'X'
+# All Moves
+            # Winning Top Row
+    if (board[1] == computerLetter and board[2] == computerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+    if (board[1] == computerLetter and board[3] == computerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+    if (board[2] == computerLetter and board[3] == computerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
 
-    >>> computers_play(["", "O", "X", "", "", "O", "", "", "X"])
-    4
-    >>> computers_play(["X", "O", "", "O", "", "", "X", "", ""])
-    4
-    >>> computers_play(["0", "", "X", "", "", "O", "", "", "X"])
-    6
-    >>> computers_play(["", "O", "", "", "X", "O", "X", "O", "X"])
-    0
-    """
+            # Winning Second Row
+    if (board[4] == computerLetter and board[5] == computerLetter) and possibleMoves.isSpaceFree(board,6):
+        return 6;
+    if (board[4] == computerLetter and board[6] == computerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+    if (board[5] == computerLetter and board[6] == computerLetter) and possibleMoves.isSpaceFree(board,4):
+        return 4;
 
-    # AI algorithm
-    # First, make it check if computer can win in the next move
-    if winning_move.possible_three(grid):
-        return winning_move.possible_three(grid)
+        # Winning Third Row
+    if (board[7] == computerLetter and board[8] == computerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[7] == computerLetter and board[9] == computerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+    if (board[8] == computerLetter and board[9] == computerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
 
-    # hard coded winning cases for the player
-    if ((grid[3] == "O") or (grid[5] == "O")) and ((grid[1] == "O") or (grid[7] == "O")) and grid[4] == "":
-        return 4
+        # Winning First Column
 
-    # Second, check if player is going to win in the next move and block it
-    if block.onemoveahead(grid):
-        return block.onemoveahead(grid)
+    if (board[1] == computerLetter and board[4] == computerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[1] == computerLetter and board[7] == computerLetter) and possibleMoves.isSpaceFree(board,4):
+        return 4;
+    if (board[4] == computerLetter and board[7] == computerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
 
-    # Third, try to take a corner if its free
-    move = possible_moves.chooseRandomMove(grid, corners)
+        # Winning Second Column
+    if (board[2] == computerLetter and board[5] == computerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+    if (board[2] == computerLetter and board[8] == computerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+    if (board[5] == computerLetter and board[8] == computerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+
+        # Winning Third Column
+    if (board[3] == computerLetter and board[6] == computerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[3] == computerLetter and board[9] == computerLetter) and possibleMoves.isSpaceFree(board,6):
+        return 6;
+    if (board[6] == computerLetter and board[9] == computerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 4;
+
+        # Winning Left to Right Diagonal
+    if (board[1] == computerLetter and board[5] == computerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[1] == computerLetter and board[9] == computerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+    if (board[5] == computerLetter and board[9] == computerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+
+        # Winning Right to Left Diagonal
+    if (board[3] == computerLetter and board[5] == computerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[3] == computerLetter and board[7] == computerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+    if (board[5] == computerLetter and board[7] == computerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+
+            # Top Row Horizontal Blocking
+    if (board[1] == playerLetter and board[2] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+    if (board[2] == playerLetter and board[3] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+    if (board[1] == playerLetter and board[3] == playerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+
+            # Second Row Horizontal Blocking
+    if (board[4] == playerLetter and board[5] == playerLetter) and possibleMoves.isSpaceFree(board,6):
+        return 6;
+    if (board[5] == playerLetter and board[6] == playerLetter) and possibleMoves.isSpaceFree(board,4):
+        return 4;
+    if (board[4] == playerLetter and board[6] == playerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+
+            # Third Row Horizontal Blocking
+    if (board[7] == playerLetter and board[8] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[8] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[7] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+
+            # First Column Vertical Blocking
+    if (board[1] == playerLetter and board[4] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[4] == playerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+    if (board[1] == playerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,4):
+        return 4;
+
+            # Second Column Vertical Blocking
+    if (board[2] == playerLetter and board[5] == playerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+    if (board[5] == playerLetter and board[8] == playerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+    if (board[2] == playerLetter and board[8] == playerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+
+            # Third Column Vertical Blocking
+    if (board[3] == playerLetter and board[6] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[3] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,6):
+        return 6;
+    if (board[6] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+
+            # Left to Right Diagonal
+    if(board[1] == playerLetter and board[5] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if(board[1] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+    if(board[5] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+
+            # Right to Left Diagonal
+    if (board[3] == playerLetter and board[5] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[3] == playerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,5):
+        return 5;
+    if (board[5] == playerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+
+        # Take Center if it's Free
+    if possibleMoves.isSpaceFree(board, 5):
+        return 5
+
+        # Counteract if they form a diagonal with PL in 5 and in 9
+    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,6):
+        return 6;
+    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+
+        # Counteract if they form a diagonal with PL in 5 and in 1
+    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and possibleMoves.isSpaceFree(board,4):
+        return 4;
+    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+
+        # Counteract if they form a diagonal with PL in 5 and in 7
+    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,4):
+        return 4;
+    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+
+        # Counteract if a diagonal with CL in 5 and PL in 1 & 9
+    if (board[1] == playerLetter and board[5] == computerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+    if (board[1] == playerLetter and board[5] == computerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+
+
+        # Counteract if diagonal with CL in 5 and PL in 3 & 7
+    if (board[3] == playerLetter and board[5] == computerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,2):
+        return 2;
+    if (board[3] == playerLetter and board[5] == computerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,8):
+        return 8;
+
+
+    if (board[2] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+    if (board[2] == playerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+    if (board[6] == playerLetter and board[1] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+    if (board[6] == playerLetter and board[7] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[4] == playerLetter and board[3] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+    if (board[4] == playerLetter and board[9] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[8] == playerLetter and board[3] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[8] == playerLetter and board[1] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if (board[2] == playerLetter and board[6] == playerLetter) and possibleMoves.isSpaceFree(board,3):
+        return 3;
+    if (board[6] == playerLetter and board[8] == playerLetter) and possibleMoves.isSpaceFree(board,9):
+        return 9;
+    if (board[4] == playerLetter and board[8] == playerLetter) and possibleMoves.isSpaceFree(board,7):
+        return 7;
+    if(board[2] == playerLetter and board[4] == playerLetter) and possibleMoves.isSpaceFree(board,1):
+        return 1;
+        # Try to take one of the corners, if they are free.
+    move = possibleMoves.chooseRandomMove(board, [1, 3, 7, 9])
     if move != None:
         return move
-
-    # Move on one of the sides
-    return possible_moves.chooseRandomMove(grid, sides)
-
-if __name__ == '__main__':
-    import doctest
-    doctest.testmod()
+        # Move on one of the sides if nothing else
+    return possibleMoves.chooseRandomMove(board, [2, 4, 6, 8])
