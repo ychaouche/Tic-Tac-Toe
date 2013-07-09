@@ -1,5 +1,5 @@
 import computer_AI
-import possibleMoves
+import moves
 
 # Tic Tac Toe
 import random
@@ -44,7 +44,7 @@ def PlayerLetter():
 
 def getPlayerMove(board):
     move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split() or not possibleMoves.isSpaceFree(board, int(move)):
+    while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.isSpaceFree(board, int(move)):
         print('What is your next move? (1-9)')
         move = raw_input()
     return int(move)
@@ -62,7 +62,7 @@ def isWinner(board, letter):
 
 def isGameBoardFull(board):
     for i in range(1, 10):
-        if possibleMoves.isSpaceFree(board, i):
+        if moves.isSpaceFree(board, i):
             return False
     return True
 
@@ -83,7 +83,7 @@ while True:
         if turn == playerLetter:
             drawGameBoard(theGameBoard)
             move = getPlayerMove(theGameBoard)
-            possibleMoves.makeMove(theGameBoard, playerLetter, move)
+            moves.makeMove(theGameBoard, playerLetter, move)
             if isWinner(theGameBoard, playerLetter):
                 drawGameBoard(theGameBoard)
                 print('You win.')
@@ -97,7 +97,7 @@ while True:
                     turn = computerLetter
         else:
             move = computer_AI.getComputerMove(theGameBoard, computerLetter)
-            possibleMoves.makeMove(theGameBoard, computerLetter, move)
+            moves.makeMove(theGameBoard, computerLetter, move)
             if isWinner(theGameBoard, computerLetter):
                 drawGameBoard(theGameBoard)
                 print('You Lose.')
