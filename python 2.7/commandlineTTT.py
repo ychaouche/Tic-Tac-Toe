@@ -31,7 +31,7 @@ def draw_game_board(board):
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
     print('   |   |')
 
-def player_letter():
+def players_choice():
     letter = ''
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
@@ -44,7 +44,7 @@ def player_letter():
 
 def get_player_move(board):
     move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.isSpaceFree(board, int(move)):
+    while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.is_space_free(board, int(move)):
         print('What is your next move? (1-9)')
         move = raw_input()
     return int(move)
@@ -75,7 +75,7 @@ instructions()
 
 while True:
     the_game_board = [' '] * 10
-    player_letter, computer_letter = player_letter()
+    player_letter, computer_letter = players_choice()
     turn = "X"
     print( turn + ' goes first.')
     game_is_playing = True
