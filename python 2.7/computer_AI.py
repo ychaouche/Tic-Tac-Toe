@@ -2,139 +2,139 @@ import moves
 
 
 
-def get_computer_move(board, computerLetter):
-    if computerLetter == 'X':
-        playerLetter = 'O'
+def get_computer_move(board, computer_letter):
+    if computer_letter == 'X':
+        player_letter = 'O'
     else:
-        playerLetter = 'X'
+        player_letter = 'X'
 # All Moves
             # Winning Top Row
-    if (board[1] == computerLetter and board[2] == computerLetter) and moves.is_space_free(board,3):
+    if (board[1] == computer_letter and board[2] == computer_letter) and moves.is_space_free(board,3):
         return 3;
-    if (board[1] == computerLetter and board[3] == computerLetter) and moves.is_space_free(board,2):
+    if (board[1] == computer_letter and board[3] == computer_letter) and moves.is_space_free(board,2):
         return 2;
-    if (board[2] == computerLetter and board[3] == computerLetter) and moves.is_space_free(board,1):
+    if (board[2] == computer_letter and board[3] == computer_letter) and moves.is_space_free(board,1):
         return 1;
 
             # Winning Second Row
-    if (board[4] == computerLetter and board[5] == computerLetter) and moves.is_space_free(board,6):
+    if (board[4] == computer_letter and board[5] == computer_letter) and moves.is_space_free(board,6):
         return 6;
-    if (board[4] == computerLetter and board[6] == computerLetter) and moves.is_space_free(board,5):
+    if (board[4] == computer_letter and board[6] == computer_letter) and moves.is_space_free(board,5):
         return 5;
-    if (board[5] == computerLetter and board[6] == computerLetter) and moves.is_space_free(board,4):
+    if (board[5] == computer_letter and board[6] == computer_letter) and moves.is_space_free(board,4):
         return 4;
 
         # Winning Third Row
-    if (board[7] == computerLetter and board[8] == computerLetter) and moves.is_space_free(board,9):
+    if (board[7] == computer_letter and board[8] == computer_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[7] == computerLetter and board[9] == computerLetter) and moves.is_space_free(board,8):
+    if (board[7] == computer_letter and board[9] == computer_letter) and moves.is_space_free(board,8):
         return 8;
-    if (board[8] == computerLetter and board[9] == computerLetter) and moves.is_space_free(board,7):
+    if (board[8] == computer_letter and board[9] == computer_letter) and moves.is_space_free(board,7):
         return 7;
 
         # Winning First Column
 
-    if (board[1] == computerLetter and board[4] == computerLetter) and moves.is_space_free(board,7):
+    if (board[1] == computer_letter and board[4] == computer_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[1] == computerLetter and board[7] == computerLetter) and moves.is_space_free(board,4):
+    if (board[1] == computer_letter and board[7] == computer_letter) and moves.is_space_free(board,4):
         return 4;
-    if (board[4] == computerLetter and board[7] == computerLetter) and moves.is_space_free(board,1):
+    if (board[4] == computer_letter and board[7] == computer_letter) and moves.is_space_free(board,1):
         return 1;
 
         # Winning Second Column
-    if (board[2] == computerLetter and board[5] == computerLetter) and moves.is_space_free(board,8):
+    if (board[2] == computer_letter and board[5] == computer_letter) and moves.is_space_free(board,8):
         return 8;
-    if (board[2] == computerLetter and board[8] == computerLetter) and moves.is_space_free(board,5):
+    if (board[2] == computer_letter and board[8] == computer_letter) and moves.is_space_free(board,5):
         return 5;
-    if (board[5] == computerLetter and board[8] == computerLetter) and moves.is_space_free(board,2):
+    if (board[5] == computer_letter and board[8] == computer_letter) and moves.is_space_free(board,2):
         return 2;
 
         # Winning Third Column
-    if (board[3] == computerLetter and board[6] == computerLetter) and moves.is_space_free(board,9):
+    if (board[3] == computer_letter and board[6] == computer_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[3] == computerLetter and board[9] == computerLetter) and moves.is_space_free(board,6):
+    if (board[3] == computer_letter and board[9] == computer_letter) and moves.is_space_free(board,6):
         return 6;
-    if (board[6] == computerLetter and board[9] == computerLetter) and moves.is_space_free(board,3):
+    if (board[6] == computer_letter and board[9] == computer_letter) and moves.is_space_free(board,3):
         return 4;
 
         # Winning Left to Right Diagonal
-    if (board[1] == computerLetter and board[5] == computerLetter) and moves.is_space_free(board,9):
+    if (board[1] == computer_letter and board[5] == computer_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[1] == computerLetter and board[9] == computerLetter) and moves.is_space_free(board,5):
+    if (board[1] == computer_letter and board[9] == computer_letter) and moves.is_space_free(board,5):
         return 5;
-    if (board[5] == computerLetter and board[9] == computerLetter) and moves.is_space_free(board,1):
+    if (board[5] == computer_letter and board[9] == computer_letter) and moves.is_space_free(board,1):
         return 1;
 
         # Winning Right to Left Diagonal
-    if (board[3] == computerLetter and board[5] == computerLetter) and moves.is_space_free(board,7):
+    if (board[3] == computer_letter and board[5] == computer_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[3] == computerLetter and board[7] == computerLetter) and moves.is_space_free(board,5):
+    if (board[3] == computer_letter and board[7] == computer_letter) and moves.is_space_free(board,5):
         return 5;
-    if (board[5] == computerLetter and board[7] == computerLetter) and moves.is_space_free(board,3):
+    if (board[5] == computer_letter and board[7] == computer_letter) and moves.is_space_free(board,3):
         return 3;
 
             # Top Row Horizontal Blocking
-    if (board[1] == playerLetter and board[2] == playerLetter) and moves.is_space_free(board,3):
+    if (board[1] == player_letter and board[2] == player_letter) and moves.is_space_free(board,3):
         return 3;
-    if (board[2] == playerLetter and board[3] == playerLetter) and moves.is_space_free(board,1):
+    if (board[2] == player_letter and board[3] == player_letter) and moves.is_space_free(board,1):
         return 1;
-    if (board[1] == playerLetter and board[3] == playerLetter) and moves.is_space_free(board,2):
+    if (board[1] == player_letter and board[3] == player_letter) and moves.is_space_free(board,2):
         return 2;
 
             # Second Row Horizontal Blocking
-    if (board[4] == playerLetter and board[5] == playerLetter) and moves.is_space_free(board,6):
+    if (board[4] == player_letter and board[5] == player_letter) and moves.is_space_free(board,6):
         return 6;
-    if (board[5] == playerLetter and board[6] == playerLetter) and moves.is_space_free(board,4):
+    if (board[5] == player_letter and board[6] == player_letter) and moves.is_space_free(board,4):
         return 4;
-    if (board[4] == playerLetter and board[6] == playerLetter) and moves.is_space_free(board,5):
+    if (board[4] == player_letter and board[6] == player_letter) and moves.is_space_free(board,5):
         return 5;
 
             # Third Row Horizontal Blocking
-    if (board[7] == playerLetter and board[8] == playerLetter) and moves.is_space_free(board,9):
+    if (board[7] == player_letter and board[8] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[8] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,7):
+    if (board[8] == player_letter and board[9] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[7] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,8):
+    if (board[7] == player_letter and board[9] == player_letter) and moves.is_space_free(board,8):
         return 8;
 
             # First Column Vertical Blocking
-    if (board[1] == playerLetter and board[4] == playerLetter) and moves.is_space_free(board,7):
+    if (board[1] == player_letter and board[4] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[4] == playerLetter and board[7] == playerLetter) and moves.is_space_free(board,1):
+    if (board[4] == player_letter and board[7] == player_letter) and moves.is_space_free(board,1):
         return 1;
-    if (board[1] == playerLetter and board[7] == playerLetter) and moves.is_space_free(board,4):
+    if (board[1] == player_letter and board[7] == player_letter) and moves.is_space_free(board,4):
         return 4;
 
             # Second Column Vertical Blocking
-    if (board[2] == playerLetter and board[5] == playerLetter) and moves.is_space_free(board,8):
+    if (board[2] == player_letter and board[5] == player_letter) and moves.is_space_free(board,8):
         return 8;
-    if (board[5] == playerLetter and board[8] == playerLetter) and moves.is_space_free(board,2):
+    if (board[5] == player_letter and board[8] == player_letter) and moves.is_space_free(board,2):
         return 2;
-    if (board[2] == playerLetter and board[8] == playerLetter) and moves.is_space_free(board,5):
+    if (board[2] == player_letter and board[8] == player_letter) and moves.is_space_free(board,5):
         return 5;
 
             # Third Column Vertical Blocking
-    if (board[3] == playerLetter and board[6] == playerLetter) and moves.is_space_free(board,9):
+    if (board[3] == player_letter and board[6] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[3] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,6):
+    if (board[3] == player_letter and board[9] == player_letter) and moves.is_space_free(board,6):
         return 6;
-    if (board[6] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,3):
+    if (board[6] == player_letter and board[9] == player_letter) and moves.is_space_free(board,3):
         return 3;
 
             # Left to Right Diagonal
-    if(board[1] == playerLetter and board[5] == playerLetter) and moves.is_space_free(board,9):
+    if(board[1] == player_letter and board[5] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if(board[1] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,5):
+    if(board[1] == player_letter and board[9] == player_letter) and moves.is_space_free(board,5):
         return 5;
-    if(board[5] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,1):
+    if(board[5] == player_letter and board[9] == player_letter) and moves.is_space_free(board,1):
         return 1;
 
             # Right to Left Diagonal
-    if (board[3] == playerLetter and board[5] == playerLetter) and moves.is_space_free(board,7):
+    if (board[3] == player_letter and board[5] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[3] == playerLetter and board[7] == playerLetter) and moves.is_space_free(board,5):
+    if (board[3] == player_letter and board[7] == player_letter) and moves.is_space_free(board,5):
         return 5;
-    if (board[5] == playerLetter and board[7] == playerLetter) and moves.is_space_free(board,3):
+    if (board[5] == player_letter and board[7] == player_letter) and moves.is_space_free(board,3):
         return 3;
 
         # Take Center if it's Free
@@ -142,72 +142,72 @@ def get_computer_move(board, computerLetter):
         return 5
 
         # Counteract if they form a diagonal with PL in 5 and in 9
-    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and moves.is_space_free(board,6):
+    if (board[5] == player_letter and board[1] == computer_letter and board[9] == player_letter) and moves.is_space_free(board,6):
         return 6;
-    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and moves.is_space_free(board,8):
+    if (board[5] == player_letter and board[1] == computer_letter and board[9] == player_letter) and moves.is_space_free(board,8):
         return 8;
-    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and moves.is_space_free(board,7):
+    if (board[5] == player_letter and board[1] == computer_letter and board[9] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[5] == playerLetter and board[1] == computerLetter and board[9] == playerLetter) and moves.is_space_free(board,3):
+    if (board[5] == player_letter and board[1] == computer_letter and board[9] == player_letter) and moves.is_space_free(board,3):
         return 3;
 
         # Counteract if they form a diagonal with PL in 5 and in 1
-    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and moves.is_space_free(board,2):
+    if (board[5] == player_letter and board[9] == computer_letter and board[1] == player_letter) and moves.is_space_free(board,2):
         return 2;
-    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and moves.is_space_free(board,4):
+    if (board[5] == player_letter and board[9] == computer_letter and board[1] == player_letter) and moves.is_space_free(board,4):
         return 4;
-    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and moves.is_space_free(board,7):
+    if (board[5] == player_letter and board[9] == computer_letter and board[1] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[5] == playerLetter and board[9] == computerLetter and board[1] == playerLetter) and moves.is_space_free(board,3):
+    if (board[5] == player_letter and board[9] == computer_letter and board[1] == player_letter) and moves.is_space_free(board,3):
         return 3;
 
         # Counteract if they form a diagonal with PL in 5 and in 7
-    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and moves.is_space_free(board,1):
+    if (board[5] == player_letter and board[3] == computer_letter and board[7] == player_letter) and moves.is_space_free(board,1):
         return 1;
-    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and moves.is_space_free(board,9):
+    if (board[5] == player_letter and board[3] == computer_letter and board[7] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and moves.is_space_free(board,4):
+    if (board[5] == player_letter and board[3] == computer_letter and board[7] == player_letter) and moves.is_space_free(board,4):
         return 4;
-    if (board[5] == playerLetter and board[3] == computerLetter and board[7] == playerLetter) and moves.is_space_free(board,8):
+    if (board[5] == player_letter and board[3] == computer_letter and board[7] == player_letter) and moves.is_space_free(board,8):
         return 8;
 
         # Counteract if a diagonal with CL in 5 and PL in 1 & 9
-    if (board[1] == playerLetter and board[5] == computerLetter and board[9] == playerLetter) and moves.is_space_free(board,2):
+    if (board[1] == player_letter and board[5] == computer_letter and board[9] == player_letter) and moves.is_space_free(board,2):
         return 2;
-    if (board[1] == playerLetter and board[5] == computerLetter and board[9] == playerLetter) and moves.is_space_free(board,8):
+    if (board[1] == player_letter and board[5] == computer_letter and board[9] == player_letter) and moves.is_space_free(board,8):
         return 8;
 
 
         # Counteract if diagonal with CL in 5 and PL in 3 & 7
-    if (board[3] == playerLetter and board[5] == computerLetter and board[7] == playerLetter) and moves.is_space_free(board,2):
+    if (board[3] == player_letter and board[5] == computer_letter and board[7] == player_letter) and moves.is_space_free(board,2):
         return 2;
-    if (board[3] == playerLetter and board[5] == computerLetter and board[7] == playerLetter) and moves.is_space_free(board,8):
+    if (board[3] == player_letter and board[5] == computer_letter and board[7] == player_letter) and moves.is_space_free(board,8):
         return 8;
 
 
-    if (board[2] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,3):
+    if (board[2] == player_letter and board[9] == player_letter) and moves.is_space_free(board,3):
         return 3;
-    if (board[2] == playerLetter and board[7] == playerLetter) and moves.is_space_free(board,1):
+    if (board[2] == player_letter and board[7] == player_letter) and moves.is_space_free(board,1):
         return 1;
-    if (board[6] == playerLetter and board[1] == playerLetter) and moves.is_space_free(board,3):
+    if (board[6] == player_letter and board[1] == player_letter) and moves.is_space_free(board,3):
         return 3;
-    if (board[6] == playerLetter and board[7] == playerLetter) and moves.is_space_free(board,9):
+    if (board[6] == player_letter and board[7] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[4] == playerLetter and board[3] == playerLetter) and moves.is_space_free(board,1):
+    if (board[4] == player_letter and board[3] == player_letter) and moves.is_space_free(board,1):
         return 1;
-    if (board[4] == playerLetter and board[9] == playerLetter) and moves.is_space_free(board,7):
+    if (board[4] == player_letter and board[9] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[8] == playerLetter and board[3] == playerLetter) and moves.is_space_free(board,9):
+    if (board[8] == player_letter and board[3] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[8] == playerLetter and board[1] == playerLetter) and moves.is_space_free(board,7):
+    if (board[8] == player_letter and board[1] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if (board[2] == playerLetter and board[6] == playerLetter) and moves.is_space_free(board,3):
+    if (board[2] == player_letter and board[6] == player_letter) and moves.is_space_free(board,3):
         return 3;
-    if (board[6] == playerLetter and board[8] == playerLetter) and moves.is_space_free(board,9):
+    if (board[6] == player_letter and board[8] == player_letter) and moves.is_space_free(board,9):
         return 9;
-    if (board[4] == playerLetter and board[8] == playerLetter) and moves.is_space_free(board,7):
+    if (board[4] == player_letter and board[8] == player_letter) and moves.is_space_free(board,7):
         return 7;
-    if(board[2] == playerLetter and board[4] == playerLetter) and moves.is_space_free(board,1):
+    if(board[2] == player_letter and board[4] == player_letter) and moves.is_space_free(board,1):
         return 1;
         # Try to take one of the corners, if they are free.
     move = moves.choose_random_move(board, [1, 3, 7, 9])
