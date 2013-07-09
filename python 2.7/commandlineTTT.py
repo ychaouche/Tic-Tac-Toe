@@ -1,4 +1,4 @@
-import computer_AI
+import computer_ai
 import moves
 
 # Tic Tac Toe
@@ -96,7 +96,7 @@ while True:
                 else:
                     turn = computer_letter
         else:
-            move = computer_AI.get_computer_move(the_game_board, computer_letter)
+            move = computer_ai.get_computer_move(the_game_board, computer_letter)
             moves.make_move(the_game_board, computer_letter, move)
             if is_winner(the_game_board, computer_letter):
                 draw_game_board(the_game_board)
