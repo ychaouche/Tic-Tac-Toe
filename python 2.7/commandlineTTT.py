@@ -31,11 +31,11 @@ def drawGameBoard(board):
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
     print('   |   |')
 
-def inputPlayerLetter():
+def PlayerLetter():
     letter = ''
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
-        letter = input().upper()
+        letter = raw_input().upper()
 
     if letter == 'X':
         return ['X', 'O']
@@ -46,7 +46,7 @@ def getPlayerMove(board):
     move = ' '
     while move not in '1 2 3 4 5 6 7 8 9'.split() or not possibleMoves.isSpaceFree(board, int(move)):
         print('What is your next move? (1-9)')
-        move = input()
+        move = raw_input()
     return int(move)
 
 def isWinner(board, letter):
@@ -68,14 +68,14 @@ def isGameBoardFull(board):
 
 def playAgain():
     print('Do you want to play again? (yes or no)')
-    return input().lower().startswith('y')
+    return raw_input().lower().startswith('y')
 
 print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
 instructions()
 
 while True:
     theGameBoard = [' '] * 10
-    playerLetter, computerLetter = inputPlayerLetter()
+    playerLetter, computerLetter = PlayerLetter()
     turn = "X"
     print( turn + ' goes first.')
     gameIsPlaying = True
@@ -111,5 +111,3 @@ while True:
                     turn = playerLetter
     if not playAgain():
         break
-
-    
