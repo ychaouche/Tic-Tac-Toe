@@ -15,7 +15,7 @@ def is_space_free(board, move):
     # return true if the square is empty
     return board[move] == ' '
 
-def choose_random_move(grid, selectedsqrs):
+def choose_random_move(board, selectedsqrs):
     """(list, list) -> int
 
     
@@ -32,7 +32,7 @@ def choose_random_move(grid, selectedsqrs):
     # Returns None if there is no valid move
     possible_moves = []
     for move in selectedsqrs:
-        if is_space_free(grid, move):
+        if is_space_free(board, move):
             possible_moves.append(move)
 
     if len(possible_moves) != 0:
@@ -41,7 +41,7 @@ def choose_random_move(grid, selectedsqrs):
         None
 
 # helps computer make his moves
-def makeMove(grid, letter, square):
+def make_move(board, letter, move):
     """(list, str, int) -> None
 
     mutate a list with the given list, str and index
@@ -58,4 +58,4 @@ def makeMove(grid, letter, square):
     ['X', 'O']
     """
     # places letter on the grid
-    grid[square] = letter
+    board[move] = letter
