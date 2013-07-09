@@ -3,7 +3,7 @@ import random
 
 # computer and player's grid options
 
-def isSpaceFree(board, move):
+def is_space_free(board, move):
     """(list, int) -> bool
 
     compares the given index in a list to an empty string
@@ -15,7 +15,7 @@ def isSpaceFree(board, move):
     # return true if the square is empty
     return board[move] == ' '
 
-def chooseRandomMove(grid, selectedsqrs):
+def choose_random_move(grid, selectedsqrs):
     """(list, list) -> int
 
     
@@ -30,13 +30,13 @@ def chooseRandomMove(grid, selectedsqrs):
     
     # Returns a valid move from the passed list on the passed board
     # Returns None if there is no valid move
-    possibleMoves = []
+    possible_moves = []
     for move in selectedsqrs:
-        if isSpaceFree(grid, move):
-            possibleMoves.append(move)
+        if is_space_free(grid, move):
+            possible_moves.append(move)
 
-    if len(possibleMoves) != 0:
-        return random.choice(possibleMoves)
+    if len(possible_moves) != 0:
+        return random.choice(possible_moves)
     else:
         None
 
