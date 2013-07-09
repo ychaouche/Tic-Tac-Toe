@@ -62,7 +62,7 @@ def is_winner(board, letter):
 
 def is_game_board_full(board):
     for i in range(1, 10):
-        if moves.isSpaceFree(board, i):
+        if moves.is_space_free(board, i):
             return False
     return True
 
@@ -74,40 +74,40 @@ print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
 instructions()
 
 while True:
-    theGameBoard = [' '] * 10
-    playerLetter, computerLetter = PlayerLetter()
+    the_game_board = [' '] * 10
+    player_letter, computer_letter = player_letter()
     turn = "X"
     print( turn + ' goes first.')
-    gameIsPlaying = True
-    while gameIsPlaying:
-        if turn == playerLetter:
-            draw_game_board(theGameBoard)
-            move = get_player_move(theGameBoard)
-            moves.make_move(theGameBoard, playerLetter, move)
-            if is_winner(theGameBoard, playerLetter):
-                draw_game_board(theGameBoard)
+    game_is_playing = True
+    while game_is_playing:
+        if turn == player_letter:
+            draw_game_board(the_game_board)
+            move = get_player_move(the_game_board)
+            moves.make_move(the_game_board, player_letter, move)
+            if is_winner(the_game_board, player_letter):
+                draw_game_board(the_game_board)
                 print('You win.')
-                gameIsPlaying = False
+                game_is_playing = False
             else:
-                if is_game_board_full(theGameBoard):
-                    draw_game_board(theGameBoard)
+                if is_game_board_full(the_game_board):
+                    draw_game_board(the_game_board)
                     print('The game is a tie.')
-                    gameIsPlaying = False
+                    game_is_playing = False
                 else:
-                    turn = computerLetter
+                    turn = computer_letter
         else:
-            move = computer_AI.get_computer_move(theGameBoard, computerLetter)
-            moves.make_move(theGameBoard, computerLetter, move)
-            if is_winner(theGameBoard, computerLetter):
-                draw_game_board(theGameBoard)
+            move = computer_AI.get_computer_move(the_game_board, computer_letter)
+            moves.make_move(the_game_board, computer_letter, move)
+            if is_winner(the_game_board, computer_letter):
+                draw_game_board(the_game_board)
                 print('You Lose.')
                 game_is_playing = False
             else:
-                if is_game_board_full(theGameBoard):
-                    draw_game_board(theGameBoard)
+                if is_game_board_full(the_game_board):
+                    draw_game_board(the_game_board)
                     print('The game is a tie!')
-                    gameIsPlaying = False
+                    game_is_playing = False
                 else:
-                    turn = playerLetter
+                    turn = player_letter
     if not play_again():
         break
