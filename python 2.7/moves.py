@@ -15,7 +15,7 @@ def is_space_free(board, move):
     # return true if the square is empty
     return board[move] == ' '
 
-def choose_random_move(board, selectedsqrs):
+def choose_random_move(board, selected_sqrs):
     """(list, list) -> int
 
     
@@ -31,7 +31,7 @@ def choose_random_move(board, selectedsqrs):
     # Returns a valid move from the passed list on the passed board
     # Returns None if there is no valid move
     possible_moves = []
-    for move in selectedsqrs:
+    for move in selected_sqrs:
         if is_space_free(board, move):
             possible_moves.append(move)
 
