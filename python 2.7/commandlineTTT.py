@@ -18,7 +18,7 @@ Have fun, and good luck.
 
 """
     )
-def drawGameBoard(board):
+def draw_game_board(board):
     print('   |   |')
     print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
     print('   |   |')
@@ -31,7 +31,7 @@ def drawGameBoard(board):
     print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
     print('   |   |')
 
-def PlayerLetter():
+def player_letter():
     letter = ''
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
@@ -42,14 +42,14 @@ def PlayerLetter():
     else:
         return ['O', 'X']
 
-def getPlayerMove(board):
+def get_player_move(board):
     move = ' '
     while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.isSpaceFree(board, int(move)):
         print('What is your next move? (1-9)')
         move = raw_input()
     return int(move)
 
-def isWinner(board, letter):
+def is_winner(board, letter):
 
     return ((board[1] == letter and board[2] == letter and board[3] == letter) or # across the top
             (board[4] == letter and board[5] == letter and board[6] == letter) or # across the middle
@@ -60,13 +60,13 @@ def isWinner(board, letter):
             (board[7] == letter and board[5] == letter and board[3] == letter) or # diagonal
             (board[9] == letter and board[5] == letter and board[1] == letter)) # diagonal
 
-def isGameBoardFull(board):
+def is_game_board_full(board):
     for i in range(1, 10):
         if moves.isSpaceFree(board, i):
             return False
     return True
 
-def playAgain():
+def play_again():
     print('Do you want to play again? (yes or no)')
     return raw_input().lower().startswith('y')
 
@@ -81,33 +81,33 @@ while True:
     gameIsPlaying = True
     while gameIsPlaying:
         if turn == playerLetter:
-            drawGameBoard(theGameBoard)
-            move = getPlayerMove(theGameBoard)
-            moves.makeMove(theGameBoard, playerLetter, move)
-            if isWinner(theGameBoard, playerLetter):
-                drawGameBoard(theGameBoard)
+            draw_game_board(theGameBoard)
+            move = get_player_move(theGameBoard)
+            moves.make_move(theGameBoard, playerLetter, move)
+            if is_winner(theGameBoard, playerLetter):
+                draw_game_board(theGameBoard)
                 print('You win.')
                 gameIsPlaying = False
             else:
-                if isGameBoardFull(theGameBoard):
-                    drawGameBoard(theGameBoard)
+                if is_game_board_full(theGameBoard):
+                    draw_game_board(theGameBoard)
                     print('The game is a tie.')
                     gameIsPlaying = False
                 else:
                     turn = computerLetter
         else:
-            move = computer_AI.getComputerMove(theGameBoard, computerLetter)
-            moves.makeMove(theGameBoard, computerLetter, move)
-            if isWinner(theGameBoard, computerLetter):
-                drawGameBoard(theGameBoard)
+            move = computer_AI.get_computer_move(theGameBoard, computerLetter)
+            moves.make_move(theGameBoard, computerLetter, move)
+            if is_winner(theGameBoard, computerLetter):
+                draw_game_board(theGameBoard)
                 print('You Lose.')
-                gameIsPlaying = False
+                game_is_playing = False
             else:
-                if isGameBoardFull(theGameBoard):
-                    drawGameBoard(theGameBoard)
+                if is_game_board_full(theGameBoard):
+                    draw_game_board(theGameBoard)
                     print('The game is a tie!')
                     gameIsPlaying = False
                 else:
                     turn = playerLetter
-    if not playAgain():
+    if not play_again():
         break
