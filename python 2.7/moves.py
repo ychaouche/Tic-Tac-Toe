@@ -1,6 +1,5 @@
 import random
 
-
 # computer and player's grid options
 
 def is_space_free(board, move):
