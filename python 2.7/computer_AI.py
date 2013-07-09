@@ -2,7 +2,7 @@ import moves
 
 
 
-def getComputerMove(board, computerLetter):
+def get_computer_move(board, computerLetter):
     if computerLetter == 'X':
         playerLetter = 'O'
     else:
