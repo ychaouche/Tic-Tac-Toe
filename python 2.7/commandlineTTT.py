@@ -1,5 +1,4 @@
-import computer_ai
-import moves
+import move_maker
 
 # Tic Tac Toe
 import random
@@ -42,19 +41,6 @@ def players_choice():
     else:
         return ['O', 'X']
 
-def get_player_move(board):
-    move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.is_space_free(board, int(move)):
-        print('What is your next move? (1-9)')
-        move = raw_input()
-    return int(move)
-
-def is_game_board_full(board):
-    for i in range(1, 10):
-        if moves.is_space_free(board, i):
-            return False
-    return True
-
 def play_again():
     print('Do you want to play again? (yes or no)')
     return raw_input().lower().startswith('y')
@@ -71,26 +57,26 @@ while True:
     while game_is_playing:
         if turn == player_letter:
             draw_game_board(the_game_board)
-            moves.make_move(the_game_board, player_letter, get_player_move(the_game_board))
-            if moves.is_winner(the_game_board, player_letter):
+            move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
+            if move_maker.is_winner(the_game_board, player_letter):
                 draw_game_board(the_game_board)
                 print('You win.')
                 game_is_playing = False
             else:
-                if is_game_board_full(the_game_board):
+                if move_maker.is_game_board_full(the_game_board):
                     draw_game_board(the_game_board)
                     print('The game is a tie.')
                     game_is_playing = False
                 else:
                     turn = computer_letter
         else:
-            moves.make_move(the_game_board, computer_letter, computer_ai.get_computer_move(the_game_board, computer_letter))
-            if moves.is_winner(the_game_board, computer_letter):
+            move_maker.make_move(the_game_board, computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
+            if move_maker.is_winner(the_game_board, computer_letter):
                 draw_game_board(the_game_board)
                 print('You Lose.')
                 game_is_playing = False
             else:
-                if is_game_board_full(the_game_board):
+                if move_maker.is_game_board_full(the_game_board):
                     draw_game_board(the_game_board)
                     print('The game is a tie!')
                     game_is_playing = False
