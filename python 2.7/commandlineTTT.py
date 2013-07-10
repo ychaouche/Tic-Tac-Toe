@@ -71,8 +71,7 @@ while True:
     while game_is_playing:
         if turn == player_letter:
             draw_game_board(the_game_board)
-            move = get_player_move(the_game_board)
-            moves.make_move(the_game_board, player_letter, move)
+            moves.make_move(the_game_board, player_letter, get_player_move(the_game_board))
             if moves.is_winner(the_game_board, player_letter):
                 draw_game_board(the_game_board)
                 print('You win.')
@@ -85,8 +84,7 @@ while True:
                 else:
                     turn = computer_letter
         else:
-            move = computer_ai.get_computer_move(the_game_board, computer_letter)
-            moves.make_move(the_game_board, computer_letter, move)
+            moves.make_move(the_game_board, computer_letter, computer_ai.get_computer_move(the_game_board, computer_letter))
             if moves.is_winner(the_game_board, computer_letter):
                 draw_game_board(the_game_board)
                 print('You Lose.')
