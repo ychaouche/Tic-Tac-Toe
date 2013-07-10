@@ -1,4 +1,3 @@
-# -*- coding: cp1252 -*-
 import moves
 
 def get_computer_move(board, computer_letter):
