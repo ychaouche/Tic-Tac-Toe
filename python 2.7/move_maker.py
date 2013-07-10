@@ -1,3 +1,4 @@
+# -*- coding: cp1252 -*-
 import moves
 
 def get_computer_move(board, computer_letter):
@@ -41,8 +42,7 @@ def make_move(board, letter, move):
 def get_player_move(board):
     move = ' '
     while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.is_space_free(board, int(move)):
-        print('What is your next move? (1-9)')
-        move = raw_input()
+        move = raw_input('What is your next move? (1-9)\n')
     return int(move)
 
 def is_game_board_full(board):
