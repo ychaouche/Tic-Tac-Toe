@@ -9,13 +9,13 @@ def get_computer_move(board, computer_letter):
         board_copy = list(board)
         if moves.is_space_free(board_copy, i):
             make_move(board_copy, computer_letter, i)
-            if moves.is_winner(board_copy, computer_letter):
+            if is_winner(board_copy, computer_letter):
                 return i  
     for i in range(1,10):
         board_copy = list(board)
         if moves.is_space_free(board_copy, i):
             make_move(board_copy, player_letter, i)
-            if moves.is_winner(board_copy, player_letter):
+            if is_winner(board_copy, player_letter):
                 return i
     for i in [4, 6]:
         trap = {1:3, 2:1, 3:1, 7:9, 8:7, 9:7}
@@ -28,6 +28,12 @@ def get_computer_move(board, computer_letter):
     if move != None:
         return move
     return moves.choose_random_move(board, [2, 4, 6, 8])
+
+def is_winner(board, letter):
+    possible_wins = [ [1,2,3], [4,5,6], [7,8,9], [7,4,1], [8,5,2], [9,6,3], [7,5,3], [9,5,1] ]
+    for x in possible_wins:
+        if board[x[0]] == letter and board[x[1]] == letter and board[x[2]] == letter:
+            return True
 
 def make_move(board, letter, move):
     board[move] = letter
