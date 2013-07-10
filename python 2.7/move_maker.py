@@ -8,13 +8,13 @@ def get_computer_move(board, computer_letter):
     for i in range(1,10):
         board_copy = list(board)
         if moves.is_space_free(board_copy, i):
-            moves.make_move(board_copy, computer_letter, i)
+            make_move(board_copy, computer_letter, i)
             if moves.is_winner(board_copy, computer_letter):
                 return i  
     for i in range(1,10):
         board_copy = list(board)
         if moves.is_space_free(board_copy, i):
-            moves.make_move(board_copy, player_letter, i)
+            make_move(board_copy, player_letter, i)
             if moves.is_winner(board_copy, player_letter):
                 return i
     for i in [4, 6]:
