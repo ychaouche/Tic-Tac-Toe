@@ -28,3 +28,19 @@ def get_computer_move(board, computer_letter):
     if move != None:
         return move
     return moves.choose_random_move(board, [2, 4, 6, 8])
+
+def make_move(board, letter, move):
+    board[move] = letter
+
+def get_player_move(board):
+    move = ' '
+    while move not in '1 2 3 4 5 6 7 8 9'.split() or not moves.is_space_free(board, int(move)):
+        print('What is your next move? (1-9)')
+        move = raw_input()
+    return int(move)
+
+def is_game_board_full(board):
+    for i in range(1, 10):
+        if moves.is_space_free(board, i):
+            return False
+    return True
