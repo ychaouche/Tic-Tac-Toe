@@ -49,17 +49,6 @@ def get_player_move(board):
         move = raw_input()
     return int(move)
 
-def is_winner(board, letter):
-
-    return ((board[1] == letter and board[2] == letter and board[3] == letter) or # across the top
-            (board[4] == letter and board[5] == letter and board[6] == letter) or # across the middle
-            (board[7] == letter and board[8] == letter and board[9] == letter) or # across the bottom
-            (board[7] == letter and board[4] == letter and board[1] == letter) or # down the left side
-            (board[8] == letter and board[5] == letter and board[2] == letter) or # down the middle
-            (board[9] == letter and board[6] == letter and board[3] == letter) or # down the right side
-            (board[7] == letter and board[5] == letter and board[3] == letter) or # diagonal
-            (board[9] == letter and board[5] == letter and board[1] == letter)) # diagonal
-
 def is_game_board_full(board):
     for i in range(1, 10):
         if moves.is_space_free(board, i):
@@ -84,7 +73,7 @@ while True:
             draw_game_board(the_game_board)
             move = get_player_move(the_game_board)
             moves.make_move(the_game_board, player_letter, move)
-            if is_winner(the_game_board, player_letter):
+            if moves.is_winner(the_game_board, player_letter):
                 draw_game_board(the_game_board)
                 print('You win.')
                 game_is_playing = False
@@ -98,7 +87,7 @@ while True:
         else:
             move = computer_ai.get_computer_move(the_game_board, computer_letter)
             moves.make_move(the_game_board, computer_letter, move)
-            if is_winner(the_game_board, computer_letter):
+            if moves.is_winner(the_game_board, computer_letter):
                 draw_game_board(the_game_board)
                 print('You Lose.')
                 game_is_playing = False
