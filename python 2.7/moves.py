@@ -12,9 +12,3 @@ def choose_random_move(board, moves):
         return random.choice(possible_moves)
     else:
         None
-
-def is_winner(board, letter):
-    possible_wins = [ [1,2,3], [4,5,6], [7,8,9], [7,4,1], [8,5,2], [9,6,3], [7,5,3], [9,5,1] ]
-    for x in possible_wins:
-        if board[x[0]] == letter and board[x[1]] == letter and board[x[2]] == letter:
-            return True
