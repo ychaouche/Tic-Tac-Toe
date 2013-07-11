@@ -1,4 +1,4 @@
-import moves
+import move_maker
 import unittest
 
 class TestMakeMove(unittest.TestCase):
@@ -8,7 +8,7 @@ class TestMakeMove(unittest.TestCase):
         """ Checks if the list has been mutated correctly """
 
         mutateme = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-        actual = moves.make_move(mutateme, "X", 1)
+        actual = move_maker.make_move(mutateme, "X", 1)
         expected = [" ", "X", " ", " ", " ", " ", " ", " ", " "]
         self.assertEqual(expected, mutateme)
 
