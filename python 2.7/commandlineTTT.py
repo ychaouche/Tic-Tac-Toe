@@ -38,12 +38,9 @@ def players_choice():
 
 def play_again():
     print('Do you want to play again? (yes or no)')
-    return raw_input().lower().startswith('y')
+    return (raw_input().lower().startswith('y'))
 
-print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
-instructions()
-
-while True:
+def play_one_game():
     the_game_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
     player_letter, computer_letter = players_choice()
     print( "X" + ' goes first.')
@@ -70,6 +67,13 @@ while True:
             draw_game_board(the_game_board)
             print('The game is a tie.')
             break
+        
+print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
+instructions()
+
+while True:
+
+    play_one_game()
 
     if not play_again():
         break
