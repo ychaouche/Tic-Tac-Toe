@@ -55,14 +55,17 @@ def get_player_move(board):
     move = ' '
     while move not in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
         move = raw_input('What is your next move? (1-9)\n')
-        if 0 < int(move) <= 3 and moves.is_space_free(board, [0,(int(move))-1]):
-            move = [0,(int(move))-1]
-        elif 3 < int(move) <= 6 and moves.is_space_free(board, [1,(int(move))-4]):
-            move = [1,(int(move))-4]
-        elif 6 < int(move) <= 9 and moves.is_space_free(board, [2,(int(move))-7]):
-            move = [2,(int(move))-7]
-        elif ((int(move) > 9) or (int(move) < 1)):
-            move = ' '
+        try:
+            if 0 < int(move) <= 3 and moves.is_space_free(board, [0,(int(move))-1]):
+                move = [0,(int(move))-1]
+            elif 3 < int(move) <= 6 and moves.is_space_free(board, [1,(int(move))-4]):
+                move = [1,(int(move))-4]
+            elif 6 < int(move) <= 9 and moves.is_space_free(board, [2,(int(move))-7]):
+                move = [2,(int(move))-7]
+            elif ((int(move) > 9) or (int(move) < 1)):
+                move = ' '
+        except ValueError:
+            pass
     return move
 
 def is_game_board_full(board):
