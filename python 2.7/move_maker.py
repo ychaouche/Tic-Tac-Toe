@@ -50,7 +50,7 @@ def make_move(board, letter, move):
     board[move[0]][move[1]] = letter
 
 def get_all_positions(board):
-    return [(x,y) for x in range(len(board)) for y in range(len(board[0]))]
+    return [[x,y] for x in range(len(board)) for y in range(len(board[0]))]
 
 def get_player_move(board):
     move = ' '
