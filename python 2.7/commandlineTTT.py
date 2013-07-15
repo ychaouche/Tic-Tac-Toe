@@ -48,20 +48,16 @@ while True:
     player_letter, computer_letter = players_choice()
     print( "X" + ' goes first.')
     game_is_playing = True
-    while game_is_playing:
-        ai = ("O" == player_letter)
+    ai = ("O" == player_letter)
+    while game_is_playing: 
         if ai:
             #ai_make_move(...)
             move_maker.make_move(the_game_board, computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
-            draw_game_board(the_game_board)   
-            #player_make_move(...)
-            move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
         else:
-            draw_game_board(the_game_board)  
             #player_make_move(..)
             move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
-            #ai_make_move(..)
-            move_maker.make_move(the_game_board, computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
+        draw_game_board(the_game_board) 
+        ai = not ai
         if move_maker.is_winner(the_game_board, player_letter):
             draw_game_board(the_game_board)
             print('You win.')
