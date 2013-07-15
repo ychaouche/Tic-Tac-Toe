@@ -18,17 +18,12 @@ Have fun, and good luck.
 """
     )
 def draw_game_board(board):
-    print('   |   |')
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
-    print('   |   |')
+    for k in range(len(board)):
+        print('   |   |')
+        print(' ' + str(board[k][0]) + ' | ' + str(board[k][1]) + ' | ' + str(board[k][2]))
+        print('   |   |')
+        if k < 2:
+            print('-----------')
 
 def players_choice():
     letter = ''
@@ -49,19 +44,20 @@ print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
 instructions()
 
 while True:
-    the_game_board = [[0, 0, 0,], [0, 0, 0], [0, 0, 0]]
+    the_game_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
     player_letter, computer_letter = players_choice()
     print( "X" + ' goes first.')
     game_is_playing = True
     while game_is_playing:
-        ai = ("X" == player_letter)
-        draw_game_board(the_game_board)        
+        ai = ("O" == player_letter)
         if ai:
             #ai_make_move(...)
             move_maker.make_move(the_game_board, computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
+            draw_game_board(the_game_board)   
             #player_make_move(...)
             move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
         else:
+            draw_game_board(the_game_board)  
             #player_make_move(..)
             move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
             #ai_make_move(..)
