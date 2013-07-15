@@ -54,9 +54,9 @@ while True:
             #ai_make_move(...)
             move_maker.make_move(the_game_board, computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
         else:
+            draw_game_board(the_game_board)
             #player_make_move(..)
             move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
-        draw_game_board(the_game_board) 
         ai = not ai
         if move_maker.is_winner(the_game_board, player_letter):
             draw_game_board(the_game_board)
