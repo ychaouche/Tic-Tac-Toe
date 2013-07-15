@@ -7,9 +7,9 @@ class TestMakeMove(unittest.TestCase):
     def test_make_move(self):
         """ Checks if the list has been mutated correctly """
 
-        mutateme = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-        actual = move_maker.make_move(mutateme, "X", 1)
-        expected = [" ", "X", " ", " ", " ", " ", " ", " ", " "]
+        mutateme = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+        actual = move_maker.make_move(mutateme, "X", [0,1])
+        expected = [[' ', 'X', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
         self.assertEqual(expected, mutateme)
 
         
