@@ -19,7 +19,7 @@ def get_computer_move(board, computer_letter):
                 make_move(board_copy, player_letter, i)
                 if is_winner(board_copy, player_letter):
                     return i
-    for i in [ [1,0], [1, 2] ]:
+    for i in [ [1,0], [1, 2], [0, 0] ]:
         if i == [1,0]:
             counter_move = [ [0,1], [0,2], [2,1], [2,2] ]
         else:
