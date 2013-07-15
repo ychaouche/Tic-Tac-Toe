@@ -7,20 +7,18 @@ def get_computer_move(board, computer_letter):
         player_letter = 'X'
     if moves.is_space_free(board, [1,1]):
         return [1,1]
-    for i in range(len(board)):
-        for j in range(i):
-            board_copy = [list(board[0]), list(board[1]), list(board[2])]
-            if moves.is_space_free(board_copy, [i,j]):
-                make_move(board_copy, computer_letter, [i,j])
+    for i in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
+        board_copy = [list(board[0]), list(board[1]), list(board[2])]
+        if moves.is_space_free(board_copy, i):
+                make_move(board_copy, computer_letter, i)
                 if is_winner(board_copy, computer_letter):
-                    return [i,j]
-    for i in range(len(board)):
-        for j in range(i):
-            board_copy = [list(board[0]), list(board[1]), list(board[2])]
-            if moves.is_space_free(board_copy, [i,j]):
-                make_move(board_copy, player_letter, [i,j])
+                    return i
+    for i in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
+        board_copy = [list(board[0]), list(board[1]), list(board[2])]
+        if moves.is_space_free(board_copy, i):
+                make_move(board_copy, player_letter, i)
                 if is_winner(board_copy, player_letter):
-                    return [i,j]
+                    return i
     for i in [ [1,0], [1, 2] ]:
         if i == [1,0]:
             counter_move = [ [0,1], [0,2], [2,1], [2,2] ]
