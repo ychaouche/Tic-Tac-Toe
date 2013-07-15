@@ -7,13 +7,13 @@ def get_computer_move(board, computer_letter):
         player_letter = 'X'
     if moves.is_space_free(board, [1,1]):
         return [1,1]
-    for i in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
+    for i in get_all_positions(board):
         board_copy = [list(board[0]), list(board[1]), list(board[2])]
         if moves.is_space_free(board_copy, i):
                 make_move(board_copy, computer_letter, i)
                 if is_winner(board_copy, computer_letter):
                     return i
-    for i in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
+    for i in get_all_positions(board):
         board_copy = [list(board[0]), list(board[1]), list(board[2])]
         if moves.is_space_free(board_copy, i):
                 make_move(board_copy, player_letter, i)
@@ -49,9 +49,12 @@ def is_winner(board, letter):
 def make_move(board, letter, move):
     board[move[0]][move[1]] = letter
 
+def get_all_positions(board):
+    return [(x,y) for x in range(len(board)) for y in range(len(board[0]))]
+
 def get_player_move(board):
     move = ' '
-    while move not in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
+    while move not in get_all_positions(board):
         move = raw_input('What is your next move? (1-9)\n')
         try:
             if 0 < int(move) <= 3 and moves.is_space_free(board, [0,(int(move))-1]):
