@@ -6,21 +6,21 @@ def get_computer_move(board, computer_letter):
     else:
         player_letter = 'X'
     if moves.is_space_free(board, [1,1]):
-        return [1,1]
+        return [[1,1]]
     for i in range(len(board)):
         for j in range(i):
             board_copy = [list(board[0]), list(board[1]), list(board[2])]
             if moves.is_space_free(board_copy, [i,j]):
                 make_move(board_copy, computer_letter, [i,j])
                 if is_winner(board_copy, computer_letter):
-                    return [i,j]
+                    return [[i,j]]
     for i in range(len(board)):
         for j in range(i):
             board_copy = [list(board[0]), list(board[1]), list(board[2])]
             if moves.is_space_free(board_copy, [i,j]):
                 make_move(board_copy, player_letter, [i,j])
                 if is_winner(board_copy, player_letter):
-                    return [i,j]
+                    return [[i,j]]
     for i in [ [1,0], [1, 2] ]:
         if i == [1,0]:
             counter_move = [ [0,1], [0,2], [2,1], [2,2] ]
@@ -53,17 +53,17 @@ def make_move(board, letter, move):
 
 def get_player_move(board):
     move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split() and moves.is_space_free(board, int(move)):
+    while move not in '1 2 3 4 5 6 7 8 9'.split():
         move = raw_input('What is your next move? (1-9)\n')
-        if 0 < int(move) <= 3:
+        if 0 < int(move) <= 3 and moves.is_space_free(board, [0,(int(move))-1]):
             move = [0,(int(move))-1]
-        elif 3 < int(move) <= 6:
+        elif 3 < int(move) <= 6 and moves.is_space_free(board, [1,(int(move))-4]):
             move = [1,(int(move))-4]
-        elif 6 < int(move) <= 9:
+        elif 6 < int(move) <= 9 and moves.is_space_free(board, [2,(int(move))-7]):
             move = [2,(int(move))-7]
         elif ((int(move) > 9) or (int(move) < 1)):
             move = ' '
-        return move
+    return move
 
 def is_game_board_full(board):
     for i in range(len(board)):
