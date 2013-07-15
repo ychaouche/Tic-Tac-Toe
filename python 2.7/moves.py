@@ -1,7 +1,7 @@
 import random
 
 def is_space_free(board, move):
-    return board[move] == ' '
+    return board[move[0]][move[1]] == ' '
 
 def choose_random_move(board, moves):
     possible_moves = []
