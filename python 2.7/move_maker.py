@@ -53,7 +53,7 @@ def make_move(board, letter, move):
 
 def get_player_move(board):
     move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split():
+    while move not in [ [0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2] ]:
         move = raw_input('What is your next move? (1-9)\n')
         if 0 < int(move) <= 3 and moves.is_space_free(board, [0,(int(move))-1]):
             move = [0,(int(move))-1]
