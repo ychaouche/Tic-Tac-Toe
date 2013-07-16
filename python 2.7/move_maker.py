@@ -74,8 +74,7 @@ def get_player_move(board):
     return move
 
 def is_game_board_full(board):
-    for i in range(len(board)):
-        for j in range(3):
-            if moves.is_space_free(board, [i,j]):
-                return False
+    for i in get_all_positions(board):
+        if moves.is_space_free(board, i):
+            return False
     return True
