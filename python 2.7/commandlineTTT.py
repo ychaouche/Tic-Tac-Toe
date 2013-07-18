@@ -1,4 +1,5 @@
 import move_maker
+import boardlib
 
 # Tic Tac Toe
 import random
@@ -18,19 +19,23 @@ Have fun, and good luck.
 """
     )
 def draw_game_board(board):
-    for k in range(len(board)):
-        print('   |   |')
-        print(' ' + str(board[k][0]) + ' | ' + str(board[k][1]) + ' | ' + str(board[k][2]))
-        print('   |   |')
-        if k < 2:
-            print('-----------')
-
+    output = ''
+    for r in range(board.size):
+        if 1 <= r < (board.size):
+            output += '----------- '
+        output += '\n   |   |\n'
+        for c in range(board.size):
+            output += ' ' + board.board[r,c]
+            if c < (board.size-1):
+                output += ' |'
+        output += '\n   |   |\n'
+    print(output)
+    
 def players_choice():
     letter = ''
     while not (letter == 'X' or letter == 'O'):
         print('Do you want to be X or O?')
         letter = raw_input().upper()
-
     if letter == 'X':
         return ['X', 'O']
     else:
@@ -41,7 +46,7 @@ def play_again():
     return (raw_input().lower().startswith('y'))
 
 def play_one_game():
-    the_game_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
+    the_game_board = boardlib.BoardLib(3)
     player_letter, computer_letter = players_choice()
     print( "X" + ' goes first.')
     game_is_playing = True
@@ -49,21 +54,21 @@ def play_one_game():
     while game_is_playing: 
         if ai:
             #ai_make_move(...)
-            move_maker.make_move(the_game_board, computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
+            move_maker.make_move(the_game_board.board, computer_letter, move_maker.get_computer_move(the_game_board.board, computer_letter))
         else:
             draw_game_board(the_game_board)
             #player_make_move(..)
-            move_maker.make_move(the_game_board, player_letter, move_maker.get_player_move(the_game_board))
+            move_maker.make_move(the_game_board.board, player_letter, move_maker.get_player_move(the_game_board.board))
         ai = not ai
-        if move_maker.is_winner(the_game_board, player_letter):
+        if move_maker.is_winner(the_game_board.board, player_letter):
             draw_game_board(the_game_board)
             print('You win.')
             break
-        if move_maker.is_winner(the_game_board, computer_letter):
+        if move_maker.is_winner(the_game_board.board, computer_letter):
             draw_game_board(the_game_board)
             print('You Lose.')
             break
-        if move_maker.is_game_board_full(the_game_board):
+        if move_maker.is_game_board_full(the_game_board.board):
             draw_game_board(the_game_board)
             print('The game is a tie.')
             break
@@ -72,8 +77,6 @@ print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
 instructions()
 
 while True:
-
     play_one_game()
-
     if not play_again():
         break

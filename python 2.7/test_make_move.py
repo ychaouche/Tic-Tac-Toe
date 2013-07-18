@@ -7,10 +7,10 @@ class TestMakeMove(unittest.TestCase):
     def test_make_move(self):
         """ Checks if the list has been mutated correctly """
 
-        mutateme = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
-        actual = move_maker.make_move(mutateme, "X", [0,1])
-        expected = [[' ', 'X', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
-        self.assertEqual(expected, mutateme)
+        mutateme = {(0, 0):'X', (0, 1):' ', (0, 2):'O', (1, 0):' ', (1, 1):' ', (1, 2):' ', (2, 0):'O', (2, 1):' ', (2, 2):'X'}
+        actual = move_maker.make_move(mutateme, "X", (0,1))
+        expected = 'X'
+        self.assertEqual(expected, mutateme[(0,1)])
 
         
 if __name__ == '__main__':
