@@ -1,3 +1,7 @@
 __pycache__
 move_maker.pyc
 moves.pyc
+boardlib.pyc
+.coverage
+htmlcov/
+commandlineTTT.pyc
