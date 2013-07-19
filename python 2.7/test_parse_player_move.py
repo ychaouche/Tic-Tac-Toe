@@ -1,5 +1,6 @@
 import unittest
 import move_maker
+import boardlib
 
 class TestParsePlayerMove(unittest.TestCase):
     """ Test class for function move_maker.get_player_move """
@@ -7,8 +8,8 @@ class TestParsePlayerMove(unittest.TestCase):
     def test_parse_player_move(self):
         """  return player's move """
 
-        board = {(0, 0):'X', (0, 1):' ', (0, 2):'O', (1, 0):' ', (1, 1):' ', (1, 2):' ', (2, 0):'O', (2, 1):' ', (2, 2):'X'}
-        actual = move_maker.parse_player_move('4', board)
+        b = boardlib.BoardLib(3)
+        actual = move_maker.parse_player_move('4', b)
         expected = (1, 0)
         self.assertEqual(expected, actual)
 
