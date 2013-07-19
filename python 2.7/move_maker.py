@@ -68,8 +68,15 @@ def get_player_move(board):
         move = parse_player_move(move, board)
     return move
 
-##def is_game_board_full(board):
-##    for i in sorted(board):
-##        if moves.is_space_free(board, i):
-##            return False
-##    return True
+def format_board(board):
+    output = ''
+    for r in range(board.size):
+        if 1 <= r < (board.size):
+            output += '----------- '
+        output += '\n   |   |\n'
+        for c in range(board.size):
+            output += ' ' + board.board[r,c]
+            if c < (board.size-1):
+                output += ' |'
+        output += '\n   |   |\n'
+    return (output)
