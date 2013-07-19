@@ -1,25 +1,28 @@
 import moves
 import copy
 
+def wins(board, letter):
+    for i in sorted(board.board):
+        board_copy = copy.deepcopy(board)
+
+        if board_copy.is_space_free(i):
+            board_copy.make_move(letter, i)
+        if is_winner(board_copy, letter):
+            return i
+    return None
+    
+
 def get_computer_move(board, computer_letter):
-    if computer_letter == 'X':
-        player_letter = 'O'
-    else:
-        player_letter = 'X'
+    player_letter = {"X": "O", "O": "X"}[computer_letter]
+    
     if board.is_space_free((1,1)):
         return (1,1)
-    for i in sorted(board.board):
-        board_copy = copy.deepcopy(board)
-        if board_copy.is_space_free(i):
-                board_copy.make_move(computer_letter, i)
-                if is_winner(board_copy, computer_letter):
-                    return i
-    for i in sorted(board.board):
-        board_copy = copy.deepcopy(board)
-        if board_copy.is_space_free(i):
-                board_copy.make_move(player_letter, i)
-                if is_winner(board_copy, player_letter):
-                    return i
+
+    for move in wins(board, computer_letter), wins(board, player_letter):
+        if move is not None:
+            return move
+
+
     for i in [ (1,0), (1, 2), (0, 0) ]:
         if i == (1,0):
             counter_move = [ (0,1), (0,2), (2,1), (2,2) ]
@@ -29,7 +32,9 @@ def get_computer_move(board, computer_letter):
             if ((board.board[i] == player_letter) and (board.board[j] == player_letter) and
                 (board.is_space_free((j[0], i[1])))):
                 return (j[0], i[1])
+
     move = moves.choose_random_move(board, [ (0,0), (0,2), (2,0), (2,2) ])
+
     if move != None and board.is_space_free(move):
         return move
     return moves.choose_random_move(board, [ (0,1), (1,0), (1,2), (2,1) ])
