@@ -7,7 +7,7 @@ class BoardLib:
         self.board[move] = letter
  
     def is_game_board_full(self):
-        for i in self.board:
+        for i in sorted(self.board):
             if ' ' in self.board[i]:
                 return False
         return True
