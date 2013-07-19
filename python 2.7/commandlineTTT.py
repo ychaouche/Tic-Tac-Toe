@@ -54,21 +54,21 @@ def play_one_game():
     while game_is_playing: 
         if ai:
             #ai_make_move(...)
-            move_maker.make_move(the_game_board.board, computer_letter, move_maker.get_computer_move(the_game_board.board, computer_letter))
+            the_game_board.make_move(computer_letter, move_maker.get_computer_move(the_game_board, computer_letter))
         else:
             draw_game_board(the_game_board)
             #player_make_move(..)
-            move_maker.make_move(the_game_board.board, player_letter, move_maker.get_player_move(the_game_board.board))
+            the_game_board.make_move(player_letter, move_maker.get_player_move(the_game_board))
         ai = not ai
-        if move_maker.is_winner(the_game_board.board, player_letter):
+        if move_maker.is_winner(the_game_board, player_letter):
             draw_game_board(the_game_board)
             print('You win.')
             break
-        if move_maker.is_winner(the_game_board.board, computer_letter):
+        if move_maker.is_winner(the_game_board, computer_letter):
             draw_game_board(the_game_board)
             print('You Lose.')
             break
-        if move_maker.is_game_board_full(the_game_board.board):
+        if the_game_board.is_game_board_full():
             draw_game_board(the_game_board)
             print('The game is a tie.')
             break
