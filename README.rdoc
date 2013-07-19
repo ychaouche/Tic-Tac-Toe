@@ -1,1 +1,17 @@
-Work in progress. Clean code TTT
+About Tic-Tac-Toe
+Unbeatable Tic-Tac-Toe game written in 2.7.4 by Jose Soto for 8th Light Apprenticeship Application
+
+Features
+Go first(X) or second (O)
+Play against a computer
+
+Use 1-9 to move your letter
+
+Board is numbered as shown below:
+
+                                               1 | 2 | 3
+                                               ---------
+                                               4 | 5 | 6
+                                               ---------
+                                               7 | 8 | 9
+
