@@ -5,13 +5,12 @@ Features
 Go first(X) or second (O)
 Play against a computer
 
-Use 1-9 to move your letter
+Use your keypad as if it were the board
 
-Board is numbered as shown below:
+        7 | 8 | 9
+        ---------
+        4 | 5 | 6
+        ---------
+        1 | 2 | 3
 
-                                               1 | 2 | 3
-                                               ---------
-                                               4 | 5 | 6
-                                               ---------
-                                               7 | 8 | 9
 
