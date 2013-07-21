@@ -1,0 +1,8 @@
+"""
+Original idea : Jose Soto <luissotojose@gmail.com> https://github.com/jsoto008
+Original code : Jose Soto <luissotojose@gmail.com> https://github.com/jsoto008
+Refactoring : Yassine Chaouche <yacinechaouche@yahoo.com> http://ychaouche.wikispot.org
+
+Code was posted on #python by Jose asking for review. Review and refactoring done by Yassine.
+"""
+
