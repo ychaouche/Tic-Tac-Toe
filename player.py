@@ -67,7 +67,7 @@ class AIPlayer(Player):
         
     def get_counter_move(self):
         board        = self.game.board
-        get_owner    = board.get_owner
+        owner        = board.owner
         human_player = self.game.human_player
         ai_player    = self.game.ai_player
 
@@ -77,12 +77,12 @@ class AIPlayer(Player):
             else:
                 counter_moves = [ (0,0), (0,1), (2,0), (2,1) ]
 
-            if not get_owner(i) == human_player:
+            if not owner(i) == human_player:
                 continue
             
             for j in counter_moves:
                 position = (j[0], i[1])
-                if (get_owner(j) == human_player) and (board.is_free(position)):
+                if (owner(j) == human_player) and (board.is_free(position)):
                     return (j[0], i[1])
 
     def get_random_move_1(self):

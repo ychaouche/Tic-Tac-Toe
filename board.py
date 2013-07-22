@@ -27,9 +27,7 @@ class Board:
 
     def show(self):
         for row in xrange(self.size,0,-1):
-            line = []
-            for col in xrange(self.size):
-                line += self._board[(row-1,col)]
+            line = [self._board[(row-1,col)] for col in xrange(self.size)]
             print "     |     |     "
             print "  %s  |  %s  |  %s  " % (line[0],line[1],line[2])
             print "     |     |     "
@@ -39,7 +37,7 @@ class Board:
     def get(self,position):
         return self._board[position]
 
-    def get_owner(self,position):
+    def owner(self,position):
         mark = self.get(position)
         if mark == self.game.human_player.playing_letter :
             return self.game.human_player
