@@ -1,3 +1,4 @@
+
 import random
 import copy
 
@@ -49,21 +50,6 @@ class Board:
         possible_moves = [move for move in moves if self.is_free(move)]
         return possible_moves and random.choice(possible_moves) or None
         
-    def square_to_move_old(self,square):
-        if not (square and square.isdigit()):
-            return " "
-        square = int(square)
-        move = " "
-        if 1 <= square <= 3 and self.is_free((0,square-1)):
-            move = (0,square-1)            
-        elif 3 < square <= 6 and self.is_free((1,square-4)):
-            move = (1,square-4)
-        elif 6 < square <= 9 and self.is_free((2,square-7)):
-            move = (2,square-7)            
-        elif ((square > 9) or (square < 1) or (square != ' ')):
-            move = ' '
-        return move
-
     def square_to_move(self,square):
         if not 1 <= square <= self.size*self.size :
             #print "[DEBUG] square_to_move(%s) is out of range" % (square)
