@@ -6,7 +6,7 @@ class Board:
     def __init__(self,game, size):
         self.game   = game
         self.size   = size
-        self._board = {(x,y) : (' ') for x in range(size) for y in range(size)}
+        self._board = {(x,y) : (' ') for x in xrange(size) for y in xrange(size)}
 
     def put_mark(self, letter, move=None,square=None):
         if square :
@@ -22,7 +22,9 @@ class Board:
                 return False
         return True
 
-    def is_free(self, move):
+    def is_free(self, move=None,square=None):
+        if square :
+            move = self.square_to_move(square)
         return self._board[move] == ' '
 
     def show(self):
@@ -34,7 +36,9 @@ class Board:
             if row-1 != 0:
                 print "-----|-----|-----"
 
-    def get(self,position):
+    def get(self,position=None,square=None):
+        if square :
+            position = self.square_to_move(square)
         return self._board[position]
 
     def owner(self,position):
@@ -106,12 +110,12 @@ class Board:
     def is_winning(self,mark):
         #Across
 
-        for x in range((max(self._board)[0]+1)):
+        for x in xrange((max(self._board)[0]+1)):
             if ((self._board[(x,0)] == mark) and (self._board[(x,1)] == mark) and (self._board[(x,2)] == mark)):
                 #print "[DEBUG] HORIZONTAL",mark
                 return True
         #Down
-        for x in range((max(self._board)[0]+1)):
+        for x in xrange((max(self._board)[0]+1)):
             if ((self._board[(0,x)] == mark) and (self._board[(1,x)] == mark) and (self._board[(2,x)] == mark)):
                 #print "[DEBUG] VERTICAL",mark
                 return True
@@ -126,19 +130,19 @@ class Board:
         backup_board = copy.deepcopy(self._board)
         move         = None
         for i in sorted(backup_board):
-            #print "[DEBUG] board before restoring backup"
-            #self.show()
-            #raw_input()
+            print "[DEBUG] board before restoring backup"
+            self.show()
+            raw_input()
             self._board = copy.deepcopy(backup_board)
-            #print "[DEBUG] board after restoring backup"
-            #self.show()
-            #raw_input()
+            print "[DEBUG] board after restoring backup"
+            self.show()
+            raw_input()
             if not self.is_free(i):
-               # print '[DEBUG] square %s is not free' % (self.move_to_square(i))
+                print '[DEBUG] square %s is not free' % (self.move_to_square(i))
                 continue
             self.put_mark(mark, i)
             if self.is_winning(mark):
-                #print '[DEBUG] square %s is a winning move' % (self.move_to_square(i))
+                print '[DEBUG] square %s is a winning move' % (self.move_to_square(i))
                 move = i
                 break
 

@@ -46,10 +46,10 @@ class AIPlayer(Player):
         
     def play(self):
         move_functions = [
+            self.get_1_1_move,                                                
             self.get_winning_move,
             self.game.human_player.get_winning_move,
             self.get_counter_move,
-            self.get_1_1_move,                                    
             self.get_random_move_1,
             self.get_random_move_2
             ]

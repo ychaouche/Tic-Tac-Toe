@@ -34,13 +34,6 @@ class Game:
 
         return letter
 
-    def human_first(self):
-        return self.human_player.playing_letter == "X"
-        
-    def play_again(self):
-        print('Do you want to play again? (yes or no)')
-        return (raw_input().lower().startswith('y'))
-
     def create_players(self):
         print( "X goes first.")
         self.human_player = HumanPlayer(game = self)
@@ -52,12 +45,20 @@ class Game:
         # We need an ordered list for the mainloop
         return self.human_first() and [self.human_player,self.ai_player] or [self.ai_player,self.human_player]
 
+    def human_first(self):
+        return self.human_player.playing_letter == "X"
+        
+    def play_again(self):
+        print('Do you want to play again? (yes or no)')
+        return (raw_input().lower().startswith('y'))
+
     def mainloop(self):
         players         = self.create_players()
         game_is_playing = True
         while game_is_playing:
             for player in players :
                 player.play()
+                #self.board.show()
                 if player.wins():
                     print "[DEBUG] show board after win"
                     self.board.show()                    
