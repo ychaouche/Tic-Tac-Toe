@@ -5,11 +5,12 @@ from player import HumanPlayer,AIPlayer
 import random
 
 class Game:
-    def __init__(self):
+    def __init__(self,board_size=3):
+        self.board_size = board_size
         self.reset()
 
     def reset(self):
-        self.board = Board(self,3)
+        self.board = Board(self,self.board_size)
         
     def intro(self):
         print('Welcome to Jose\'s Unbeatable Tic Tac Toe!')
@@ -79,7 +80,7 @@ class Game:
 
     
 def main():
-    game = Game()
+    game = Game(board_size=3)
     game.intro()
     while(game.mainloop()):
         game.reset()
